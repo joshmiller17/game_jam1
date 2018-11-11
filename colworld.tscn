@@ -74,6 +74,7 @@ text = "8:15 AM"
 percent_visible = 1.0
 lines_skipped = 0
 max_lines_visible = -1
+_sections_unfolded = [ "Focus", "Grow Direction", "Mouse", "Size Flags", "custom_colors", "custom_fonts" ]
 
 [node name="Clock_Timer" type="Timer" parent="." index="3"]
 
