@@ -103,10 +103,17 @@ func _physics_process(delta):
 #		show_where_to_go()
 	
 	if motion.length()>0:
-		$AnimatedSprite.animation = "b_walk"
+		if character == "A":
+			$AnimatedSprite.animation = "a_walk"
+			$AnimatedSprite.play()
+		elif character == "B":
+			$AnimatedSprite.animation = "b_walk"
 		$AnimatedSprite.play()
 	else:
-		$AnimatedSprite.animation = "b_static"
+		if character == "A":
+			$AnimatedSprite.animation = "a_static"
+		elif character == "B":
+			$AnimatedSprite.animation = "b_static"
 		$AnimatedSprite.stop()
 		
 	print(motion)
