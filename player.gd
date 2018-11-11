@@ -4,42 +4,63 @@ extends KinematicBody2D
 # move_and_slide works.
 
 # Member variables
-const MOTION_SPEED = 160 # Pixels/second
+const MOTION_SPEED = 200 # Pixels/second
 
 var input_sequence = ""
 var last_input = ""
 var necessary_input = ""
 
+func can_move(dir):
+	print("NEED: " + necessary_input)
+	return necessary_input == "" or necessary_input.substr(0,1) == dir;
+	
+func update_move(dir):
+	if last_input != dir:
+		last_input = dir
+		input_sequence += dir
+		if necessary_input.substr(0,1) == dir:
+			necessary_input = necessary_input.substr(1,necessary_input.length() - 1)
+			if necessary_input == "":
+				input_sequence = ""
+		print("INPUT:" + input_sequence)
+		print("NEED: " + necessary_input)
+
+
+func check_compulsions():
+	if input_sequence.ends_with("LR") and necessary_input == "":
+		necessary_input += "LRLRLRLR"
+	if input_sequence.ends_with("RL") and necessary_input == "":
+		necessary_input += "RLRLRLRL"
+	if input_sequence.ends_with("UD") and necessary_input == "":
+		necessary_input += "UDUDUDUD"
+	if input_sequence.ends_with("DU") and necessary_input == "":
+		necessary_input += "DUDUDUDU"
+	if input_sequence.ends_with("LD") and necessary_input == "":
+		necessary_input += "RULDRULD"
+	if input_sequence.ends_with("RD") and necessary_input == "":
+		necessary_input += "LURDLURD"
+
 
 func _physics_process(delta):
 	var motion = Vector2()
-	
-	if Input.is_action_pressed("move_up"):
+	if Input.is_action_pressed("move_up") and can_move("U"):
 		motion += Vector2(0, -1)
-		if last_input != "U":
-			last_input = "U"
-			input_sequence += "U"
-			print(input_sequence)
-	if Input.is_action_pressed("move_bottom"):
+		update_move("U")
+	if Input.is_action_pressed("move_bottom") and can_move("D"):
 		motion += Vector2(0, 1)
-		if last_input != "D":
-			last_input = "D"
-			input_sequence += "D"
-			print(input_sequence)
-	if Input.is_action_pressed("move_left"):
+		update_move("D")
+	if Input.is_action_pressed("move_left") and can_move("L"):
 		motion += Vector2(-1, 0)
-		if last_input != "L":
-			last_input = "L"
-			input_sequence += "L"
-			print(input_sequence)
-	if Input.is_action_pressed("move_right"):
+		update_move("L")
+	if Input.is_action_pressed("move_right") and can_move("R"):
 		motion += Vector2(1, 0)
-		if last_input != "R":
-			last_input = "R"
-			input_sequence += "R"
-			print(input_sequence)
-			
-	if input_sequence[:4]
+		update_move("R")
+	
+	check_compulsions()
+	
+	# trim the input sequence to make sure it doesn't get too long
+	if input_sequence.length() > 16:
+		input_sequence = input_sequence.substr(8, input_sequence.length())
 	
 	motion = motion.normalized() * MOTION_SPEED
 
