@@ -26,7 +26,7 @@ extents = Vector2( 8, 8 )
 "shape_transform": Transform2D( 1, 0, 0, 1, 8, 8 )
 } ]
 
-[node name="colworld" type="Node2D"]
+[node name="colworld" type="Node2D" index="0"]
 
 script = ExtResource( 1 )
 
@@ -62,8 +62,8 @@ anchor_right = 0.0
 anchor_bottom = 0.0
 margin_left = 222.0
 margin_top = 44.0
-margin_right = 325.0
-margin_bottom = 76.0
+margin_right = 399.0
+margin_bottom = 80.0
 rect_pivot_offset = Vector2( 0, 0 )
 rect_clip_content = false
 mouse_filter = 2
@@ -74,15 +74,24 @@ text = "8:15 AM"
 percent_visible = 1.0
 lines_skipped = 0
 max_lines_visible = -1
-_sections_unfolded = [ "Focus", "Grow Direction", "Mouse", "Size Flags", "custom_colors", "custom_fonts" ]
+_sections_unfolded = [ "Focus", "Grow Direction", "Mouse", "Rect", "Size Flags", "custom_colors", "custom_fonts" ]
 
 [node name="Clock_Timer" type="Timer" parent="." index="3"]
 
 process_mode = 1
-wait_time = 2.0
+wait_time = 0.5
 one_shot = false
 autostart = true
 
+[node name="flash_timer" type="Timer" parent="." index="4"]
+
+process_mode = 1
+wait_time = 0.2
+one_shot = false
+autostart = false
+
 [connection signal="timeout" from="Clock_Timer" to="." method="_on_Clock_Timer_timeout"]
+
+[connection signal="timeout" from="flash_timer" to="." method="_on_flash_timer_timeout"]
 
 
