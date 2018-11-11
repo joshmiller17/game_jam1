@@ -1,0 +1,73 @@
+[gd_scene load_steps=5 format=2]
+
+[ext_resource path="res://scripts/Chair Living.gd" type="Script" id=1]
+[ext_resource path="res://assets/interactions_objects-02.png" type="Texture" id=2]
+
+
+
+[sub_resource type="RectangleShape2D" id=1]
+
+custom_solver_bias = 0.0
+extents = Vector2( 14.6085, 13.9472 )
+
+[sub_resource type="RectangleShape2D" id=2]
+
+custom_solver_bias = 0.0
+extents = Vector2( 17.815, 7.36762 )
+
+[node name="Chair Kitchen" type="RigidBody2D" index="0"]
+
+input_pickable = false
+collision_layer = 1
+collision_mask = 1
+mode = 0
+mass = 1.0
+friction = 1.0
+bounce = 0.0
+gravity_scale = 0.0
+custom_integrator = false
+continuous_cd = 0
+contacts_reported = 0
+contact_monitor = false
+sleeping = false
+can_sleep = true
+linear_velocity = Vector2( 0, 0 )
+linear_damp = -1.0
+angular_velocity = 0.0
+angular_damp = -1.0
+script = ExtResource( 1 )
+_sections_unfolded = [ "Transform" ]
+messy = false
+
+[node name="Messy" type="Sprite" parent="." index="0"]
+
+visible = false
+position = Vector2( -1, 148 )
+texture = ExtResource( 2 )
+region_enabled = true
+region_rect = Rect2( 110, 523.412, 678, 568 )
+_sections_unfolded = [ "Region", "Transform" ]
+
+[node name="MessyCollision" type="CollisionShape2D" parent="." index="1"]
+
+visible = false
+position = Vector2( -0.447578, 162.715 )
+scale = Vector2( 24.3786, 22.3609 )
+shape = SubResource( 1 )
+
+[node name="Clean" type="Sprite" parent="." index="2"]
+
+visible = false
+texture = ExtResource( 2 )
+region_enabled = true
+region_rect = Rect2( 1124, 525.412, 678, 268 )
+_sections_unfolded = [ "Region", "Transform" ]
+
+[node name="CleanCollision" type="CollisionShape2D" parent="." index="3"]
+
+visible = false
+position = Vector2( -4.2653, 12.4312 )
+scale = Vector2( 19.6732, 22.3609 )
+shape = SubResource( 2 )
+
+

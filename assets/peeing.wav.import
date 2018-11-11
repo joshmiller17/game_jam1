@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/peeing.wav-4a0fb65865a4452776469a4514fdf53a.sample"
+
+[deps]
+
+source_file="res://assets/peeing.wav"
+source_md5="785e10de5c586a76c51a7d028ae76fa2"
+
+dest_files=[ "res://.import/peeing.wav-4a0fb65865a4452776469a4514fdf53a.sample" ]
+dest_md5="d77db6a1bb0ca3b97036eebcceaa0662"
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=true
+edit/normalize=true
+edit/loop=false
+compress/mode=0

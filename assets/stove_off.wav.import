@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/stove_off.wav-0e8baa0ab58930d5ba4b7009cab47595.sample"
+
+[deps]
+
+source_file="res://assets/stove_off.wav"
+source_md5="89ff43f44e717077ef2be23cc463aeb7"
+
+dest_files=[ "res://.import/stove_off.wav-0e8baa0ab58930d5ba4b7009cab47595.sample" ]
+dest_md5="93d5f536a887ae70bfeee544c33042a2"
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=true
+edit/normalize=true
+edit/loop=false
+compress/mode=0
