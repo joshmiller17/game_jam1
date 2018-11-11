@@ -4,24 +4,40 @@ extends RigidBody2D
 # var a = 2
 # var b = "textvar"
 
-var messy = true
+export (bool) var messy
 func _ready():
 	# Called when the node is added to the scene for the first time.
 	# Initialization here
-	$CleanCollision.disabled = true
-	$Clean.hide()
+	print(messy)
+	if messy:
+		$CleanCollision.disabled = true
+		$Clean.hide()
+		$MessyCollision.disabled = false
+		$Messy.show()	
+	else:
+		$CleanCollision.disabled = false
+		$Clean.show()
+		$MessyCollision.disabled = true
+		$Messy.hide()	
 	
 
 
-func clean():
-	$CleanCollision.disabled = false
-	$Clean.show()
-	$MessyCollision.disabled = true
-	$Messy.hide()
+func interact():
+	if messy:
+		$CleanCollision.disabled = false
+		$Clean.show()
+		$MessyCollision.disabled = true
+		$Messy.hide()
+		messy = false
+	else:
+		$CleanCollision.disabled = true
+		$Clean.hide()
+		$MessyCollision.disabled = false
+		$Messy.show()		
+		messy = true
 	
 func _process(delta):
 	# Called every frame. Delta is time since last frame.
 	# Update game logic here.
-	print(delta)
 	if Input.is_action_just_pressed('ui_up'):
-		clean()
+		interact()
