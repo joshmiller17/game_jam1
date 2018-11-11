@@ -6,10 +6,11 @@
 [sub_resource type="RectangleShape2D" id=1]
 
 custom_solver_bias = 0.0
-extents = Vector2( 6.32885, 5.43775 )
+extents = Vector2( 7.56778, 3.92511 )
 
 [node name="Laptop" type="RigidBody2D" index="0"]
 
+position = Vector2( 283.424, 109.637 )
 input_pickable = false
 collision_layer = 1
 collision_mask = 1
@@ -30,6 +31,9 @@ angular_velocity = 0.0
 angular_damp = -1.0
 script = ExtResource( 1 )
 _sections_unfolded = [ "Transform" ]
+__meta__ = {
+"_edit_group_": true
+}
 
 [node name="Messy" type="Sprite" parent="." index="0"]
 
@@ -50,14 +54,14 @@ shape = SubResource( 1 )
 visible = false
 texture = ExtResource( 2 )
 region_enabled = true
-region_rect = Rect2( 4463.19, 1988.77, 150, 148 )
+region_rect = Rect2( 4460.75, 1985, 154, 154 )
 _sections_unfolded = [ "Region" ]
 
 [node name="CleanCollision" type="CollisionShape2D" parent="." index="3"]
 
 visible = false
-position = Vector2( 0.669067, 1.83628 )
-scale = Vector2( 24.3786, 22.3609 )
+position = Vector2( 65.5593, 0.66993 )
+scale = Vector2( 19.6732, 22.3609 )
 shape = SubResource( 1 )
 
 

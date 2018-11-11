@@ -12,7 +12,7 @@ extents = Vector2( 8, 8 )
 flags = 4
 load_path = "res://.import/character-03.png-440759c533ca95ce6e83b14012f676a3.stex"
 
-[node name="player" type="KinematicBody2D" index="0"]
+[node name="player" type="KinematicBody2D"]
 
 input_pickable = false
 collision_layer = 1

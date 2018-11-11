@@ -3,12 +3,12 @@
 [ext_resource path="res://Chair Living.gd" type="Script" id=1]
 [ext_resource path="res://interactions_objects-02.png" type="Texture" id=2]
 
-[sub_resource type="RectangleShape2D" id=1]
+[sub_resource type="CircleShape2D" id=3]
 
 custom_solver_bias = 0.0
-extents = Vector2( 7.92036, 16.2762 )
+radius = 4.10964
 
-[node name="Sofa" type="RigidBody2D"]
+[node name="Bed" type="RigidBody2D" index="0"]
 
 input_pickable = false
 collision_layer = 1
@@ -30,36 +30,33 @@ angular_velocity = 0.0
 angular_damp = -1.0
 script = ExtResource( 1 )
 _sections_unfolded = [ "Transform" ]
-__meta__ = {
-"_edit_group_": true
-}
 
 [node name="Messy" type="Sprite" parent="." index="0"]
 
-visible = false
 texture = ExtResource( 2 )
 region_enabled = true
-region_rect = Rect2( 5947, 1392, 464.118, 752 )
+region_rect = Rect2( 2787.6, 687.884, 110, 110 )
 _sections_unfolded = [ "Region" ]
 
 [node name="MessyCollision" type="CollisionShape2D" parent="." index="1"]
 
 visible = false
-position = Vector2( 0.669067, 1.83628 )
+position = Vector2( -0.70718, 0.830421 )
 scale = Vector2( 24.3786, 22.3609 )
-shape = SubResource( 1 )
+shape = SubResource( 3 )
 
 [node name="Clean" type="Sprite" parent="." index="2"]
 
 texture = ExtResource( 2 )
 region_enabled = true
-region_rect = Rect2( 6073.12, 411.754, 341.882, 679.456 )
+region_rect = Rect2( 2637.6, 686.884, 109, 110 )
 _sections_unfolded = [ "Region" ]
 
 [node name="CleanCollision" type="CollisionShape2D" parent="." index="3"]
 
-position = Vector2( 0.669067, 1.83628 )
+visible = false
+position = Vector2( -0.70718, 0.830421 )
 scale = Vector2( 24.3786, 22.3609 )
-shape = SubResource( 1 )
+shape = SubResource( 3 )
 
 
