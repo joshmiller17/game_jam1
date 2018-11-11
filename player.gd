@@ -15,7 +15,8 @@ var indicators = []
 var vis_indicator = preload("res://vis_indicator.tscn")
 
 func _ready():
-	$Message.hide()
+	#$Message.hide()
+	pass
 
 func can_move(dir):
 	return necessary_input == "" or necessary_input.substr(0,1) == dir;
