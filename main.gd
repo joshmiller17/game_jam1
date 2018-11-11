@@ -31,6 +31,6 @@ func _on_Clock_Timer_timeout():
 		hour = 0
 		pm = not pm
 	if pm:
-		$Clock.text = "%02d : %02d PM" % [hour, minute]
+		$Clock.text = "%02d:%02d PM" % [hour, minute]
 	else:
-		$Clock.text = "%02d : %02d AM" % [hour, minute]
+		$Clock.text = "%02d:%02d AM" % [hour, minute]

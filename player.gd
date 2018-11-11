@@ -6,11 +6,12 @@ extends KinematicBody2D
 # Member variables
 const MOTION_SPEED = 200 # Pixels/second
 
+var b_start_loc = Vector2(100,100)
 var obsession_level = 3
 var input_sequence = ""
 var last_input = ""
 var necessary_input = ""
-var character = "B"
+var character = "A"
 var indicators = []
 var vis_indicator = preload("res://vis_indicator.tscn")
 
@@ -123,3 +124,13 @@ func _physics_process(delta):
 
 func _on_MessageTimer_timeout():
 	$Message.hide()
+	
+func leave_room():
+	if character == "A":
+		character = "B"
+		hide()
+		position = b_start_loc
+		# TODO change sprite
+		show()
+	#if character == "B":
+	#	get_tree().quit()
