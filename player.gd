@@ -118,10 +118,10 @@ func _physics_process(delta):
 	motion = motion.normalized() * MOTION_SPEED
 
 	move_and_slide(motion)
-	if(get_slide_collision(0) != null):
-		if (get_slide_collision(0).get_collider()).is_class('RigidBody2D'):
-			var msg = get_slide_collision(0).get_collider().msg
-			show_msg(msg)
+	#if(get_slide_collision(0) != null):
+	#	if (get_slide_collision(0).get_collider()).is_class('RigidBody2D'):
+	#		var msg = get_slide_collision(0).get_collider().msg
+	#		show_msg(msg)
 
 func _on_MessageTimer_timeout():
 	$Message.hide()
