@@ -13,7 +13,7 @@ var last_input = ""
 var necessary_input = ""
 var character = "A"
 var indicators = []
-var vis_indicator = preload("res://vis_indicator.tscn")
+#var vis_indicator = preload("res://vis_indicator.tscn")
 
 func _ready():
 	#$Message.hide()
@@ -32,26 +32,26 @@ func update_move(dir):
 			if necessary_input == "":
 				input_sequence = ""
 
-func clear_indicators():
-	for indicator_ref in indicators:
-		if indicator_ref.get_ref():
-			indicator_ref.get_ref().queue_free()
-			indicators.erase(indicator_ref)
+#func clear_indicators():
+#	for indicator_ref in indicators:
+#		if indicator_ref.get_ref():
+#			indicator_ref.get_ref().queue_free()
+#			indicators.erase(indicator_ref)
 
-func show_where_to_go():
-	clear_indicators()
-	var dir_needed = necessary_input.substr(0,1)
-	var ind = vis_indicator.instance()
-	indicators.append(weakref(ind))
-	add_child(ind)
-	if dir_needed == "U":
-		ind.set_position(Vector2(0, -50))
-	if dir_needed == "L":
-		ind.set_position(Vector2(-50, 0))
-	if dir_needed == "D":
-		ind.set_position(Vector2(0, 50))
-	if dir_needed == "R":
-		ind.set_position(Vector2(50, 0))
+#func show_where_to_go():
+#	clear_indicators()
+#	var dir_needed = necessary_input.substr(0,1)
+#	var ind = vis_indicator.instance()
+#	indicators.append(weakref(ind))
+#	add_child(ind)
+#	if dir_needed == "U":
+#		ind.set_position(Vector2(0, -50))
+#	if dir_needed == "L":
+#		ind.set_position(Vector2(-50, 0))
+#	if dir_needed == "D":
+#		ind.set_position(Vector2(0, 50))
+#	if dir_needed == "R":
+#		ind.set_position(Vector2(50, 0))
 	
 
 func check_compulsions():
@@ -83,24 +83,47 @@ func _physics_process(delta):
 	var motion = Vector2()
 	if Input.is_action_pressed("move_up") and can_move("U"):
 		motion += Vector2(0, -1)
-		update_move("U")
-	else:
-		show_where_to_go()
+#		update_move("U")
+#	else:
+#		show_where_to_go()
 	if Input.is_action_pressed("move_bottom") and can_move("D"):
 		motion += Vector2(0, 1)
-		update_move("D")
-	else:
-		show_where_to_go()
+#		update_move("D")
+#	else:
+#		show_where_to_go()
 	if Input.is_action_pressed("move_left") and can_move("L"):
 		motion += Vector2(-1, 0)
-		update_move("L")
-	else:
-		show_where_to_go()
+#		update_move("L")
+#	else:
+#		show_where_to_go()
 	if Input.is_action_pressed("move_right") and can_move("R"):
 		motion += Vector2(1, 0)
-		update_move("R")
+#		update_move("R")
+#	else:
+#		show_where_to_go()
+	
+	if motion.length()>0:
+		$AnimatedSprite.animation = "b_walk"
+		$AnimatedSprite.play()
 	else:
-		show_where_to_go()
+		$AnimatedSprite.animation = "b_static"
+		$AnimatedSprite.stop()
+		
+	print(motion)
+		
+	if motion.x<0 && motion.y==0:
+		# left
+		$AnimatedSprite.rotation_degrees = 0
+		$AnimatedSprite.flip_h = true
+	elif motion.x>0 && motion.y==0:
+		$AnimatedSprite.rotation_degrees = 0
+		$AnimatedSprite.flip_h = false
+	
+	elif motion.y<0 && motion.x==0:
+		#up
+		$AnimatedSprite.rotation_degrees = -90
+	elif motion.y>0 && motion.x==0:
+		$AnimatedSprite.rotation_degrees = 90
 	
 	if Input.is_action_just_pressed('interact'):
 			$Message.show()

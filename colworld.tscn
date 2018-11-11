@@ -25,7 +25,7 @@ extents = Vector2( 8, 8 )
 "shape_transform": Transform2D( 1, 0, 0, 1, 8, 8 )
 } ]
 
-[node name="colworld" type="Node2D"]
+[node name="colworld" type="Node2D" index="0"]
 
 [node name="TileMap" type="TileMap" parent="." index="0"]
 
@@ -51,6 +51,6 @@ _sections_unfolded = [ "Collision" ]
 
 [node name="player" parent="." index="1" instance=ExtResource( 2 )]
 
-position = Vector2( 166.493, 216.105 )
+position = Vector2( 166.493, 217.105 )
 
 

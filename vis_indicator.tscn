@@ -4,6 +4,7 @@
 
 [node name="Visual Indicator" type="Sprite"]
 
+visible = false
 texture = ExtResource( 1 )
 
 
