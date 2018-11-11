@@ -79,14 +79,14 @@ _sections_unfolded = [ "Focus", "Grow Direction", "Mouse", "Rect", "Size Flags",
 [node name="Clock_Timer" type="Timer" parent="." index="3"]
 
 process_mode = 1
-wait_time = 0.5
+wait_time = 2.0
 one_shot = false
 autostart = true
 
 [node name="flash_timer" type="Timer" parent="." index="4"]
 
 process_mode = 1
-wait_time = 0.2
+wait_time = 0.5
 one_shot = false
 autostart = false
 

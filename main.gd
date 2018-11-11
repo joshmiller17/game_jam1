@@ -1,9 +1,10 @@
 extends Node2D
 
-var hour = 9
-var minute = 28
+var hour = 8
+var minute = 59
 var pm = false
 var late = false
+var timer_started = false
 
 var flash = false
 var b_red = true
@@ -23,19 +24,19 @@ func _on_Clock_Timer_timeout():
 		minute = 0
 		hour += 1
 		# we're late
-		$Clock.add_color_override("font_color", Color(1,0,0,1)) 
+		$Clock.add_color_override("font_color", Color(1,.2,.2,1)) 
 	if hour > 8 and minute > 30:
 		late = true
-	if late: # we're very late
+	if late and not timer_started: # we're very late
 		$flash_timer.start()
-		pass # TODO make the text big and flashy
+		timer_started = true
 	if hour > 12:
 		hour = 0
 		pm = not pm
 	if pm:
-		$Clock.text = "%02d : %02d PM" % [hour, minute]
+		$Clock.text = "%02d:%02d PM" % [hour, minute]
 	else:
-		$Clock.text = "%02d : %02d AM" % [hour, minute]
+		$Clock.text = "%02d:%02d AM" % [hour, minute]
 
 func _on_flash_timer_timeout():
 	b_red = !b_red

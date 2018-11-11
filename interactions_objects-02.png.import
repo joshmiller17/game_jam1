@@ -7,7 +7,10 @@ path="res://.import/interactions_objects-02.png-2e5d9dfc9a8238592c763f891fede761
 [deps]
 
 source_file="res://interactions_objects-02.png"
+source_md5="91ba0412335e8fb781fb191b788972e0"
+
 dest_files=[ "res://.import/interactions_objects-02.png-2e5d9dfc9a8238592c763f891fede761.stex" ]
+dest_md5="305848dd9c2998a56504bd2c12b100eb"
 
 [params]
 
