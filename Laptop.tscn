@@ -10,7 +10,6 @@ extents = Vector2( 7.56778, 3.92511 )
 
 [node name="Laptop" type="RigidBody2D" index="0"]
 
-position = Vector2( 283.424, 109.637 )
 input_pickable = false
 collision_layer = 1
 collision_mask = 1

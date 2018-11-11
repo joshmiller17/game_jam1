@@ -29,7 +29,7 @@ extents = Vector2( 8, 8 )
 
 [node name="TileMap" type="TileMap" parent="." index="0"]
 
-position = Vector2( 112.315, 156.763 )
+position = Vector2( 112.315, 155.535 )
 mode = 0
 tile_set = SubResource( 2 )
 cell_size = Vector2( 16, 16 )
