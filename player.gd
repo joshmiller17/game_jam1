@@ -103,9 +103,8 @@ func _physics_process(delta):
 		show_where_to_go()
 	
 	if Input.is_action_just_pressed('interact'):
-			#$Message.show()
-			#$MessageTimer.start()
-			leave_room()
+			$Message.show()
+			$MessageTimer.start()
 			
 	if character == "B":
 		check_compulsions()
