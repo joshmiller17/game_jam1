@@ -10,6 +10,8 @@ var input_sequence = ""
 var last_input = ""
 var necessary_input = ""
 
+func _ready():
+	$Message.hide()
 
 func _physics_process(delta):
 	var motion = Vector2()
@@ -38,9 +40,16 @@ func _physics_process(delta):
 			last_input = "R"
 			input_sequence += "R"
 			print(input_sequence)
+	if Input.is_action_just_pressed('interact'):
+			$Message.show()
+			$MessageTimer.start()
 			
-	if input_sequence[:4]
+#	if input_sequence[:4]
 	
 	motion = motion.normalized() * MOTION_SPEED
 
 	move_and_slide(motion)
+
+
+func _on_MessageTimer_timeout():
+	$Message.hide()
