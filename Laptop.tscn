@@ -6,9 +6,9 @@
 [sub_resource type="RectangleShape2D" id=1]
 
 custom_solver_bias = 0.0
-extents = Vector2( 8.39962, 10.5112 )
+extents = Vector2( 6.32885, 5.43775 )
 
-[node name="Chair Living" type="RigidBody2D" index="0"]
+[node name="Laptop" type="RigidBody2D" index="0"]
 
 input_pickable = false
 collision_layer = 1
@@ -30,32 +30,32 @@ angular_velocity = 0.0
 angular_damp = -1.0
 script = ExtResource( 1 )
 _sections_unfolded = [ "Transform" ]
-__meta__ = {
-"_edit_group_": true
-}
 
 [node name="Messy" type="Sprite" parent="." index="0"]
 
 texture = ExtResource( 2 )
 region_enabled = true
-region_rect = Rect2( 5019.18, 1015.25, 531, 532.889 )
+region_rect = Rect2( 4425.19, 1724.77, 188, 188 )
 _sections_unfolded = [ "Region" ]
 
 [node name="MessyCollision" type="CollisionShape2D" parent="." index="1"]
 
-position = Vector2( 0.669067, 1.83628 )
+visible = false
+position = Vector2( 33.327, -0.496422 )
 scale = Vector2( 24.3786, 22.3609 )
 shape = SubResource( 1 )
 
 [node name="Clean" type="Sprite" parent="." index="2"]
 
+visible = false
 texture = ExtResource( 2 )
 region_enabled = true
-region_rect = Rect2( 5175.18, 486.408, 341, 414.592 )
+region_rect = Rect2( 4463.19, 1988.77, 150, 148 )
 _sections_unfolded = [ "Region" ]
 
 [node name="CleanCollision" type="CollisionShape2D" parent="." index="3"]
 
+visible = false
 position = Vector2( 0.669067, 1.83628 )
 scale = Vector2( 24.3786, 22.3609 )
 shape = SubResource( 1 )
