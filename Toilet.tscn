@@ -1,14 +1,19 @@
-[gd_scene load_steps=4 format=2]
+[gd_scene load_steps=5 format=2]
 
 [ext_resource path="res://Chair Living.gd" type="Script" id=1]
 [ext_resource path="res://interactions_objects-02.png" type="Texture" id=2]
 
+[sub_resource type="RectangleShape2D" id=2]
+
+custom_solver_bias = 0.0
+extents = Vector2( 7.73796, 4.33868 )
+
 [sub_resource type="RectangleShape2D" id=1]
 
 custom_solver_bias = 0.0
-extents = Vector2( 7.92036, 16.2762 )
+extents = Vector2( 9.46418, 4.29832 )
 
-[node name="Sofa" type="RigidBody2D" index="0"]
+[node name="Toilet" type="RigidBody2D"]
 
 input_pickable = false
 collision_layer = 1
@@ -30,38 +35,35 @@ angular_velocity = 0.0
 angular_damp = -1.0
 script = ExtResource( 1 )
 _sections_unfolded = [ "Transform" ]
-__meta__ = {
-"_edit_group_": true
-}
 messy = true
 
 [node name="Messy" type="Sprite" parent="." index="0"]
 
 texture = ExtResource( 2 )
 region_enabled = true
-region_rect = Rect2( 5947, 1392, 464.118, 752 )
+region_rect = Rect2( 1923.93, 927.478, 292, 184 )
 _sections_unfolded = [ "Region" ]
 
 [node name="MessyCollision" type="CollisionShape2D" parent="." index="1"]
 
 visible = false
-position = Vector2( 0.669067, 1.83628 )
+position = Vector2( -37.068, -6.81393 )
 scale = Vector2( 24.3786, 22.3609 )
-shape = SubResource( 1 )
+shape = SubResource( 2 )
 
 [node name="Clean" type="Sprite" parent="." index="2"]
 
-visible = false
+position = Vector2( -3.46246, -5.5125 )
 texture = ExtResource( 2 )
 region_enabled = true
-region_rect = Rect2( 6073.12, 411.754, 341.882, 679.456 )
+region_rect = Rect2( 1919.93, 1173.48, 294, 178 )
 _sections_unfolded = [ "Region" ]
 
 [node name="CleanCollision" type="CollisionShape2D" parent="." index="3"]
 
 visible = false
-position = Vector2( 0.669067, 1.83628 )
-scale = Vector2( 24.3786, 22.3609 )
+position = Vector2( -31.9107, 1.5724 )
+scale = Vector2( 19.6732, 22.3609 )
 shape = SubResource( 1 )
 
 
