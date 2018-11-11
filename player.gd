@@ -14,6 +14,9 @@ var character = "B"
 var indicators = []
 var vis_indicator = preload("res://vis_indicator.tscn")
 
+func _ready():
+	$Message.hide()
+
 func can_move(dir):
 	return necessary_input == "" or necessary_input.substr(0,1) == dir;
 	
@@ -70,6 +73,9 @@ func make_string_sequence(s):
 		string += s
 	return string
 
+func show_msg(msg):
+	$Message.show()
+	$MessageTimer.start()
 
 func _physics_process(delta):
 	var motion = Vector2()
@@ -94,13 +100,25 @@ func _physics_process(delta):
 	else:
 		show_where_to_go()
 	
+	if Input.is_action_just_pressed('interact'):
+			$Message.show()
+			$MessageTimer.start()
+			
 	if character == "B":
 		check_compulsions()
 	
 	# trim the input sequence to make sure it doesn't get too long
 	if input_sequence.length() > 16:
 		input_sequence = input_sequence.substr(8, input_sequence.length())
+
 	
 	motion = motion.normalized() * MOTION_SPEED
 
 	move_and_slide(motion)
+	if(get_slide_collision(0) != null):
+		if (get_slide_collision(0).get_collider()).is_class('RigidBody2D'):
+			var msg = get_slide_collision(0).get_collider().msg
+			show_msg(msg)
+
+func _on_MessageTimer_timeout():
+	$Message.hide()
