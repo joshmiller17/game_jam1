@@ -79,11 +79,9 @@ _sections_unfolded = [ "Offset", "Transform", "Z Index" ]
 
 [node name="objects" type="Node2D" parent="." index="3"]
 
-editor/display_folded = true
-
 [node name="Coffee_Mug" parent="objects" index="0" instance=ExtResource( 4 )]
 
-position = Vector2( -949.401, -1389.43 )
+position = Vector2( -814.849, -1397.84 )
 z_index = 2
 _sections_unfolded = [ "Transform", "Z Index" ]
 
@@ -97,7 +95,7 @@ position = Vector2( -1142.25, 188.93 )
 
 [node name="Stove" parent="objects" index="3" instance=ExtResource( 7 )]
 
-position = Vector2( -1162.52, -1403.53 )
+position = Vector2( -1279.05, -1390.71 )
 
 [node name="Wardrobe" parent="objects" index="4" instance=ExtResource( 8 )]
 
@@ -117,7 +115,7 @@ position = Vector2( -1764.98, 4.89175 )
 
 [node name="Chair Kitchen" parent="objects" index="7" instance=ExtResource( 11 )]
 
-position = Vector2( -2297.77, -363.77 )
+position = Vector2( -2387.92, -440.113 )
 
 [node name="Toilet" parent="objects" index="8" instance=ExtResource( 12 )]
 
