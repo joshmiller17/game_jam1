@@ -4,7 +4,7 @@ extends KinematicBody2D
 # move_and_slide works.
 
 # Member variables
-const MOTION_SPEED = 200 # Pixels/second
+const MOTION_SPEED = 600 # Pixels/second
 
 var b_start_loc = Vector2(100,100)
 var obsession_level = 3
