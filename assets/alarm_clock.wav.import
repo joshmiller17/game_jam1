@@ -7,7 +7,10 @@ path="res://.import/alarm_clock.wav-a8f085c6ff316b6db8a9d5d4620087f5.sample"
 [deps]
 
 source_file="res://assets/alarm_clock.wav"
+source_md5="c06c472ab45c8778be544612a23aa8ab"
+
 dest_files=[ "res://.import/alarm_clock.wav-a8f085c6ff316b6db8a9d5d4620087f5.sample" ]
+dest_md5="8b0788e4e2cd603bd2a0a3fd26d3feb2"
 
 [params]
 
