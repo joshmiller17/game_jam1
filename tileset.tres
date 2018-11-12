@@ -13,15 +13,14 @@ extents = Vector2( 10, 10 )
 0/texture = ExtResource( 1 )
 0/tex_offset = Vector2( 0, 0 )
 0/modulate = Color( 1, 1, 1, 1 )
-0/region = Rect2( 0, 0, 16, 16 )
+0/region = Rect2( 0, 0, 1, 1 )
 0/is_autotile = false
-0/occluder_offset = Vector2( 8, 8 )
-0/navigation_offset = Vector2( 8, 8 )
+0/occluder_offset = Vector2( 0.5, 0.5 )
+0/navigation_offset = Vector2( 0.5, 0.5 )
 0/shapes = [ {
 "autotile_coord": Vector2( 0, 0 ),
 "one_way": false,
 "shape": SubResource( 1 ),
-"shape_transform": Transform2D( 1.08067, 0, 0, 1.03658, 8.87385, 7.69924 )
+"shape_transform": Transform2D( 1.08067, 0, 0, 1.03658, 1.37385, 0.199244 )
 } ]
-_sections_unfolded = [ "0" ]
 

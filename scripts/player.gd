@@ -11,7 +11,7 @@ var obsession_level = 3
 var input_sequence = ""
 var last_input = ""
 var necessary_input = ""
-var character = "A"
+var character = "B"
 var indicators = []
 var near_interaction_object = false
 var interaction_object
@@ -128,8 +128,6 @@ func _physics_process(delta):
 		elif character == "B":
 			$AnimatedSprite.animation = "b_static"
 		$AnimatedSprite.stop()
-		
-	print(motion)
 		
 	show_direction(motion)
 	

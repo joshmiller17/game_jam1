@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=2]
+[gd_scene load_steps=14 format=2]
 
 [ext_resource path="res://tileset.tres" type="TileSet" id=1]
 [ext_resource path="res://scenes/player.tscn" type="PackedScene" id=2]
@@ -12,12 +12,13 @@
 [ext_resource path="res://scenes/Sofa.tscn" type="PackedScene" id=10]
 [ext_resource path="res://scenes/Chair Kitchen.tscn" type="PackedScene" id=11]
 [ext_resource path="res://scenes/Toilet.tscn" type="PackedScene" id=12]
+[ext_resource path="res://assets/bgm.ogg" type="AudioStream" id=13]
 
-[node name="colworld" type="Node2D" index="0"]
+[node name="colworld" type="Node2D"]
 
 [node name="TileMap" type="TileMap" parent="." index="0"]
 
-position = Vector2( -421.964, 277.372 )
+position = Vector2( -426.999, 277.372 )
 mode = 0
 tile_set = ExtResource( 1 )
 cell_size = Vector2( 64, 64 )
@@ -39,7 +40,6 @@ _sections_unfolded = [ "Cell", "Collision" ]
 
 [node name="player" parent="." index="1" instance=ExtResource( 2 )]
 
-editor/display_folded = true
 position = Vector2( 158.586, 1276.23 )
 scale = Vector2( 10, 10 )
 z_index = 2
@@ -77,33 +77,29 @@ position = Vector2( 237.922, 62.1144 )
 texture = ExtResource( 3 )
 _sections_unfolded = [ "Offset", "Transform", "Z Index" ]
 
-[node name="objects" type="Node2D" parent="." index="3"]
-
-editor/display_folded = true
-
-[node name="Coffee_Mug" parent="objects" index="0" instance=ExtResource( 4 )]
+[node name="Coffee_Mug" parent="." index="3" instance=ExtResource( 4 )]
 
 position = Vector2( -949.401, -1389.43 )
 z_index = 2
 _sections_unfolded = [ "Transform", "Z Index" ]
 
-[node name="Bed" parent="objects" index="1" instance=ExtResource( 5 )]
+[node name="Bed" parent="." index="4" instance=ExtResource( 5 )]
 
 position = Vector2( -321.622, 1443.01 )
 
-[node name="Chair Living" parent="objects" index="2" instance=ExtResource( 6 )]
+[node name="Chair Living" parent="." index="5" instance=ExtResource( 6 )]
 
 position = Vector2( -1142.25, 188.93 )
 
-[node name="Stove" parent="objects" index="3" instance=ExtResource( 7 )]
+[node name="Stove" parent="." index="6" instance=ExtResource( 7 )]
 
 position = Vector2( -1162.52, -1403.53 )
 
-[node name="Wardrobe" parent="objects" index="4" instance=ExtResource( 8 )]
+[node name="Wardrobe" parent="." index="7" instance=ExtResource( 8 )]
 
 position = Vector2( -2613.83, -1466.67 )
 
-[node name="Laptop" parent="objects" index="5" instance=ExtResource( 9 )]
+[node name="Laptop" parent="." index="8" instance=ExtResource( 9 )]
 
 position = Vector2( 2996.58, -1099.73 )
 z_index = 1
@@ -111,16 +107,24 @@ friction = 0.0
 _sections_unfolded = [ "Transform", "Z Index" ]
 messy = false
 
-[node name="Sofa" parent="objects" index="6" instance=ExtResource( 10 )]
+[node name="Sofa" parent="." index="9" instance=ExtResource( 10 )]
 
 position = Vector2( -1764.98, 4.89175 )
 
-[node name="Chair Kitchen" parent="objects" index="7" instance=ExtResource( 11 )]
+[node name="Chair Kitchen" parent="." index="10" instance=ExtResource( 11 )]
 
 position = Vector2( -2297.77, -363.77 )
 
-[node name="Toilet" parent="objects" index="8" instance=ExtResource( 12 )]
+[node name="Toilet" parent="." index="11" instance=ExtResource( 12 )]
 
 position = Vector2( 1111.69, 419.868 )
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="." index="12"]
+
+stream = ExtResource( 13 )
+volume_db = -5.0
+autoplay = true
+mix_target = 0
+bus = "Master"
 
 
