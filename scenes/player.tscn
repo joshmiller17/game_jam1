@@ -3,14 +3,12 @@
 [ext_resource path="res://scripts/player.gd" type="Script" id=1]
 [ext_resource path="res://assets/animator.tres" type="SpriteFrames" id=2]
 
-
-
-[sub_resource type="StreamTexture" id=2]
+[sub_resource type="StreamTexture" id=1]
 
 flags = 4
 load_path = "res://.import/character-03.png-440759c533ca95ce6e83b14012f676a3.stex"
 
-[sub_resource type="RectangleShape2D" id=1]
+[sub_resource type="RectangleShape2D" id=2]
 
 custom_solver_bias = 0.0
 extents = Vector2( 8, 8 )
@@ -28,7 +26,7 @@ script = ExtResource( 1 )
 visible = false
 position = Vector2( 0.170147, 0.299378 )
 scale = Vector2( 0.0604769, 0.0607647 )
-texture = SubResource( 2 )
+texture = SubResource( 1 )
 vframes = 2
 hframes = 2
 region_enabled = true
@@ -38,7 +36,7 @@ _sections_unfolded = [ "Animation", "Region" ]
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." index="1"]
 
 position = Vector2( 0, 1 )
-shape = SubResource( 1 )
+shape = SubResource( 2 )
 
 [node name="AnimatedSprite" type="AnimatedSprite" parent="." index="2"]
 
