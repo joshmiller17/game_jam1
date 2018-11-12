@@ -1,0 +1,53 @@
+[gd_scene load_steps=4 format=2]
+
+[ext_resource path="res://scripts/InteractionObject.gd" type="Script" id=1]
+[ext_resource path="res://assets/interactions_objects-02.png" type="Texture" id=2]
+
+[sub_resource type="RectangleShape2D" id=1]
+
+custom_solver_bias = 0.0
+extents = Vector2( 7.56778, 3.92511 )
+
+[node name="Laptop" type="StaticBody2D"]
+
+input_pickable = false
+collision_layer = 1
+collision_mask = 1
+constant_linear_velocity = Vector2( 0, 0 )
+constant_angular_velocity = 0.0
+friction = 1.0
+bounce = 0.0
+script = ExtResource( 1 )
+_sections_unfolded = [ "Transform" ]
+messy = true
+
+[node name="Messy" type="Sprite" parent="." index="0"]
+
+texture = ExtResource( 2 )
+region_enabled = true
+region_rect = Rect2( 4425.19, 1724.77, 188, 188 )
+_sections_unfolded = [ "Region" ]
+
+[node name="MessyCollision" type="CollisionShape2D" parent="." index="1"]
+
+visible = false
+position = Vector2( 33.327, -0.496422 )
+scale = Vector2( 24.3786, 22.3609 )
+shape = SubResource( 1 )
+
+[node name="Clean" type="Sprite" parent="." index="2"]
+
+position = Vector2( 19, 18 )
+texture = ExtResource( 2 )
+region_enabled = true
+region_rect = Rect2( 4460.75, 1985, 154, 154 )
+_sections_unfolded = [ "Region" ]
+
+[node name="CleanCollision" type="CollisionShape2D" parent="." index="3"]
+
+visible = false
+position = Vector2( 65.5593, 0.66993 )
+scale = Vector2( 19.6732, 22.3609 )
+shape = SubResource( 1 )
+
+
