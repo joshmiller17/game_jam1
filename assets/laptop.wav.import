@@ -7,7 +7,10 @@ path="res://.import/laptop.wav-c3c6783f7a698594f05ce0b4dce563b8.sample"
 [deps]
 
 source_file="res://assets/laptop.wav"
+source_md5="dffb3d9d98bb855c29ad5f77320e36f3"
+
 dest_files=[ "res://.import/laptop.wav-c3c6783f7a698594f05ce0b4dce563b8.sample" ]
+dest_md5="320a243bba02d6f5af852edcfa899727"
 
 [params]
 

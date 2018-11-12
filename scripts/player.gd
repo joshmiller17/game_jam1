@@ -129,8 +129,6 @@ func _physics_process(delta):
 			$AnimatedSprite.animation = "b_static"
 		$AnimatedSprite.stop()
 		
-	print(motion)
-		
 	show_direction(motion)
 	
 	
