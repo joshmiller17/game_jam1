@@ -7,10 +7,7 @@ path="res://.import/stove_off.wav-0e8baa0ab58930d5ba4b7009cab47595.sample"
 [deps]
 
 source_file="res://assets/stove_off.wav"
-source_md5="89ff43f44e717077ef2be23cc463aeb7"
-
 dest_files=[ "res://.import/stove_off.wav-0e8baa0ab58930d5ba4b7009cab47595.sample" ]
-dest_md5="93d5f536a887ae70bfeee544c33042a2"
 
 [params]
 

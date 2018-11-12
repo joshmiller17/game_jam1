@@ -7,10 +7,7 @@ path="res://.import/place_holder.png-ef92f69f6ad975edf7f95877699b902a.stex"
 [deps]
 
 source_file="res://assets/place_holder.png"
-source_md5="b489c54480b00c2b77c32334cc26b979"
-
 dest_files=[ "res://.import/place_holder.png-ef92f69f6ad975edf7f95877699b902a.stex" ]
-dest_md5="129509f9294b760e08851e781e801fc3"
 
 [params]
 
