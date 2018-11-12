@@ -11,7 +11,7 @@ var obsession_level = 3
 var input_sequence = ""
 var last_input = ""
 var necessary_input = ""
-var character = "B"
+var character = "A"
 var indicators = []
 var near_interaction_object = false
 var interaction_object
