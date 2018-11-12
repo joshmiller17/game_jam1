@@ -7,10 +7,7 @@ path="res://.import/invis.png-2c5f0034818b516a250ca73bc00e5b0a.stex"
 [deps]
 
 source_file="res://assets/invis.png"
-source_md5="4f79232066fa2f4cdbaf1cddad9dfc9b"
-
 dest_files=[ "res://.import/invis.png-2c5f0034818b516a250ca73bc00e5b0a.stex" ]
-dest_md5="63c5840711d8cdbcd14e3ee23b269987"
 
 [params]
 

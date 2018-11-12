@@ -13,6 +13,8 @@ var last_input = ""
 var necessary_input = ""
 var character = "A"
 var indicators = []
+var near_interaction_object = false
+var interaction_object
 #var vis_indicator = preload("res://vis_indicator.tscn")
 
 func _ready():
