@@ -1,7 +1,8 @@
-[gd_scene load_steps=5 format=2]
+[gd_scene load_steps=6 format=2]
 
 [ext_resource path="res://scripts/InteractionObject.gd" type="Script" id=1]
 [ext_resource path="res://assets/interactions_objects-02.png" type="Texture" id=2]
+[ext_resource path="res://assets/chair.wav" type="AudioStream" id=3]
 
 [sub_resource type="RectangleShape2D" id=1]
 
@@ -13,7 +14,7 @@ extents = Vector2( 5.96961, 4.94492 )
 custom_solver_bias = 0.0
 extents = Vector2( 4.37548, 5.66683 )
 
-[node name="Chair Kitchen" type="StaticBody2D" index="0"]
+[node name="Chair Kitchen" type="StaticBody2D"]
 
 input_pickable = false
 collision_layer = 1
@@ -55,5 +56,27 @@ visible = false
 position = Vector2( -5.31792, -12.832 )
 scale = Vector2( 19.6732, 22.3609 )
 shape = SubResource( 2 )
+
+[node name="MessySound" type="AudioStreamPlayer2D" parent="." index="4"]
+
+stream = ExtResource( 3 )
+volume_db = 0.0
+pitch_scale = 1.0
+autoplay = false
+max_distance = 2000.0
+attenuation = 1.0
+bus = "Master"
+area_mask = 1
+
+[node name="CleanSound" type="AudioStreamPlayer2D" parent="." index="5"]
+
+stream = ExtResource( 3 )
+volume_db = 0.0
+pitch_scale = 1.0
+autoplay = false
+max_distance = 2000.0
+attenuation = 1.0
+bus = "Master"
+area_mask = 1
 
 

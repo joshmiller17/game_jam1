@@ -27,12 +27,14 @@ func interact(type):
 		$Clean.show()
 		$MessyCollision.disabled = true
 		$Messy.hide()
+		$CleanSound.playing = true
 		messy = false
 	elif !messy and type == 'A':
 		$CleanCollision.disabled = true
 		$Clean.hide()
 		$MessyCollision.disabled = false
 		$Messy.show()		
+		$MessySound.playing = true
 		messy = true
 	
 func _process(delta):

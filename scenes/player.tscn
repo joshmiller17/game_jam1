@@ -1,19 +1,26 @@
-[gd_scene load_steps=5 format=2]
+[gd_scene load_steps=7 format=2]
 
 [ext_resource path="res://scripts/player.gd" type="Script" id=1]
 [ext_resource path="res://assets/animator.tres" type="SpriteFrames" id=2]
+[ext_resource path="res://assets/Poly-Regular.otf" type="DynamicFontData" id=3]
 
-
-
-[sub_resource type="StreamTexture" id=2]
+[sub_resource type="StreamTexture" id=1]
 
 flags = 4
 load_path = "res://.import/character-03.png-440759c533ca95ce6e83b14012f676a3.stex"
 
-[sub_resource type="RectangleShape2D" id=1]
+[sub_resource type="RectangleShape2D" id=2]
 
 custom_solver_bias = 0.0
 extents = Vector2( 8, 8 )
+
+[sub_resource type="DynamicFont" id=3]
+
+size = 10
+use_mipmaps = false
+use_filter = false
+font_data = ExtResource( 3 )
+_sections_unfolded = [ "Font", "Settings" ]
 
 [node name="player" type="KinematicBody2D"]
 
@@ -28,7 +35,7 @@ script = ExtResource( 1 )
 visible = false
 position = Vector2( 0.170147, 0.299378 )
 scale = Vector2( 0.0604769, 0.0607647 )
-texture = SubResource( 2 )
+texture = SubResource( 1 )
 vframes = 2
 hframes = 2
 region_enabled = true
@@ -38,7 +45,7 @@ _sections_unfolded = [ "Animation", "Region" ]
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." index="1"]
 
 position = Vector2( 0, 1 )
-shape = SubResource( 1 )
+shape = SubResource( 2 )
 
 [node name="AnimatedSprite" type="AnimatedSprite" parent="." index="2"]
 
@@ -46,5 +53,37 @@ scale = Vector2( 0.05, 0.05 )
 frames = ExtResource( 2 )
 animation = "a_static"
 _sections_unfolded = [ "Transform" ]
+
+[node name="Message" type="Label" parent="." index="3"]
+
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_left = -11.0
+margin_top = -19.0
+margin_right = 29.0
+margin_bottom = 6.0
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
+mouse_filter = 2
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 1
+size_flags_vertical = 4
+custom_fonts/font = SubResource( 3 )
+text = "Test"
+percent_visible = 1.0
+lines_skipped = 0
+max_lines_visible = -1
+_sections_unfolded = [ "custom_fonts" ]
+
+[node name="MessageTimer" type="Timer" parent="." index="4"]
+
+process_mode = 1
+wait_time = 1.0
+one_shot = true
+autostart = false
+
+[connection signal="timeout" from="MessageTimer" to="." method="_on_MessageTimer_timeout"]
 
 

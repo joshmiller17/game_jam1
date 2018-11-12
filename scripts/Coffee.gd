@@ -8,6 +8,7 @@ var mug_cleared = true
 var stain_visiable = false
 func show_mug():
 	$Mug.show()
+	$Sip.playing = true
 	
 func show_stain():
 	$Mug.hide()

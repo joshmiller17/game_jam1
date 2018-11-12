@@ -1,7 +1,9 @@
-[gd_scene load_steps=5 format=2]
+[gd_scene load_steps=7 format=2]
 
 [ext_resource path="res://scripts/InteractionObject.gd" type="Script" id=1]
 [ext_resource path="res://assets/interactions_objects-02.png" type="Texture" id=2]
+[ext_resource path="res://assets/peeing.wav" type="AudioStream" id=3]
+[ext_resource path="res://assets/sink.wav" type="AudioStream" id=4]
 
 [sub_resource type="RectangleShape2D" id=1]
 
@@ -13,7 +15,7 @@ extents = Vector2( 7.73796, 4.33868 )
 custom_solver_bias = 0.0
 extents = Vector2( 9.46418, 4.29832 )
 
-[node name="Toilet" type="StaticBody2D" index="0"]
+[node name="Toilet" type="StaticBody2D"]
 
 input_pickable = false
 collision_layer = 1
@@ -28,6 +30,7 @@ messy = false
 
 [node name="Messy" type="Sprite" parent="." index="0"]
 
+visible = false
 texture = ExtResource( 2 )
 region_enabled = true
 region_rect = Rect2( 1923.93, 927.478, 292, 184 )
@@ -54,5 +57,27 @@ visible = false
 position = Vector2( -31.9107, 1.5724 )
 scale = Vector2( 19.6732, 22.3609 )
 shape = SubResource( 2 )
+
+[node name="MessySound" type="AudioStreamPlayer2D" parent="." index="4"]
+
+stream = ExtResource( 3 )
+volume_db = 0.0
+pitch_scale = 1.0
+autoplay = false
+max_distance = 2000.0
+attenuation = 1.0
+bus = "Master"
+area_mask = 1
+
+[node name="CleanSound" type="AudioStreamPlayer2D" parent="." index="5"]
+
+stream = ExtResource( 4 )
+volume_db = 0.0
+pitch_scale = 1.0
+autoplay = false
+max_distance = 2000.0
+attenuation = 1.0
+bus = "Master"
+area_mask = 1
 
 

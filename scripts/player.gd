@@ -18,7 +18,7 @@ var interaction_object
 #var vis_indicator = preload("res://vis_indicator.tscn")
 
 func _ready():
-	#$Message.hide()
+	$Message.hide()
 	pass
 
 func can_move(dir):
@@ -136,6 +136,8 @@ func _physics_process(delta):
 	if Input.is_action_just_pressed('interact'):
 			if near_interaction_object:
 				interaction_object.interact(character)
+				show_msg('Hello')
+				
 			
 	if character == "B":
 		check_compulsions()
@@ -152,6 +154,7 @@ func _physics_process(delta):
 		if (get_slide_collision(0).get_collider()).is_class('StaticBody2D'):
 			interaction_object = get_slide_collision(0).get_collider()
 			near_interaction_object = true
+			
 		
 
 func _on_MessageTimer_timeout():
