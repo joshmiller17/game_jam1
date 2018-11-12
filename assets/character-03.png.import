@@ -7,7 +7,10 @@ path="res://.import/character-03.png-af3125f5b9a65664280aa60eccf3d024.stex"
 [deps]
 
 source_file="res://assets/character-03.png"
+source_md5="d0281a104518e8f64fe4416ab1bc3481"
+
 dest_files=[ "res://.import/character-03.png-af3125f5b9a65664280aa60eccf3d024.stex" ]
+dest_md5="4357cd83683e892c7b825eab6a0b6031"
 
 [params]
 

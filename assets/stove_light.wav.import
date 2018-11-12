@@ -7,7 +7,10 @@ path="res://.import/stove_light.wav-59148457193f0ddaecbcbd0fc4be2bb0.sample"
 [deps]
 
 source_file="res://assets/stove_light.wav"
+source_md5="319282c16c54f4ef3a2cd7b2382aa322"
+
 dest_files=[ "res://.import/stove_light.wav-59148457193f0ddaecbcbd0fc4be2bb0.sample" ]
+dest_md5="c93f77c779a8638e1a3191a71ca96420"
 
 [params]
 

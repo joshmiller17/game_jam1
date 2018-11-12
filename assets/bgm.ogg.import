@@ -7,7 +7,10 @@ path="res://.import/bgm.ogg-e1728340e2c8938587d9482b715a001a.oggstr"
 [deps]
 
 source_file="res://assets/bgm.ogg"
+source_md5="2b015685e50b2cf5bc32c5a903ee54e7"
+
 dest_files=[ "res://.import/bgm.ogg-e1728340e2c8938587d9482b715a001a.oggstr" ]
+dest_md5="b30dc3d186958f4f2bf79147b286b9c4"
 
 [params]
 

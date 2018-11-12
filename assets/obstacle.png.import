@@ -7,7 +7,10 @@ path="res://.import/obstacle.png-8750f5009cb316b1822a7355dd2a4e4c.stex"
 [deps]
 
 source_file="res://assets/obstacle.png"
+source_md5="593e6d05e3859ff3e39eddb0bcad093b"
+
 dest_files=[ "res://.import/obstacle.png-8750f5009cb316b1822a7355dd2a4e4c.stex" ]
+dest_md5="ad71f3bc8585c641906a5ff5124ac2e6"
 
 [params]
 
