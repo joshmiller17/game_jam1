@@ -7,10 +7,7 @@ path="res://.import/door_close.wav-2a2e68ee20a1084999a0079454f26ad1.sample"
 [deps]
 
 source_file="res://assets/door_close.wav"
-source_md5="5b0980688d774a6d37189e6b8f5d289e"
-
 dest_files=[ "res://.import/door_close.wav-2a2e68ee20a1084999a0079454f26ad1.sample" ]
-dest_md5="aef930b6432b7b5dd54733fc3200919c"
 
 [params]
 

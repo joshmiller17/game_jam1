@@ -1,4 +1,4 @@
-extends RigidBody2D
+extends StaticBody2D
 
 # class member variables go here, for example:
 # var a = 2
@@ -8,7 +8,6 @@ export (bool) var messy
 func _ready():
 	# Called when the node is added to the scene for the first time.
 	# Initialization here
-	print(messy)
 	if messy:
 		$CleanCollision.disabled = true
 		$Clean.hide()
@@ -22,14 +21,14 @@ func _ready():
 	
 
 
-func interact():
-	if messy:
+func interact(type):
+	if messy and type =='B':
 		$CleanCollision.disabled = false
 		$Clean.show()
 		$MessyCollision.disabled = true
 		$Messy.hide()
 		messy = false
-	else:
+	elif !messy and type == 'A':
 		$CleanCollision.disabled = true
 		$Clean.hide()
 		$MessyCollision.disabled = false
@@ -39,5 +38,4 @@ func interact():
 func _process(delta):
 	# Called every frame. Delta is time since last frame.
 	# Update game logic here.
-	if Input.is_action_just_pressed('ui_up'):
-		interact()
+	pass 
