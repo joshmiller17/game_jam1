@@ -1,43 +1,30 @@
 [gd_scene load_steps=5 format=2]
 
-[ext_resource path="res://scripts/Chair Living.gd" type="Script" id=1]
+[ext_resource path="res://scripts/InteractionObject.gd" type="Script" id=1]
 [ext_resource path="res://assets/interactions_objects-02.png" type="Texture" id=2]
-
-
-
-[sub_resource type="RectangleShape2D" id=2]
-
-custom_solver_bias = 0.0
-extents = Vector2( 7.73796, 4.33868 )
 
 [sub_resource type="RectangleShape2D" id=1]
 
 custom_solver_bias = 0.0
+extents = Vector2( 7.73796, 4.33868 )
+
+[sub_resource type="RectangleShape2D" id=2]
+
+custom_solver_bias = 0.0
 extents = Vector2( 9.46418, 4.29832 )
 
-[node name="Toilet" type="RigidBody2D"]
+[node name="Toilet" type="StaticBody2D" index="0"]
 
 input_pickable = false
 collision_layer = 1
 collision_mask = 1
-mode = 0
-mass = 1.0
+constant_linear_velocity = Vector2( 0, 0 )
+constant_angular_velocity = 0.0
 friction = 1.0
 bounce = 0.0
-gravity_scale = 0.0
-custom_integrator = false
-continuous_cd = 0
-contacts_reported = 0
-contact_monitor = false
-sleeping = false
-can_sleep = true
-linear_velocity = Vector2( 0, 0 )
-linear_damp = -1.0
-angular_velocity = 0.0
-angular_damp = -1.0
 script = ExtResource( 1 )
 _sections_unfolded = [ "Transform" ]
-messy = true
+messy = false
 
 [node name="Messy" type="Sprite" parent="." index="0"]
 
@@ -51,7 +38,7 @@ _sections_unfolded = [ "Region" ]
 visible = false
 position = Vector2( -37.068, -6.81393 )
 scale = Vector2( 24.3786, 22.3609 )
-shape = SubResource( 2 )
+shape = SubResource( 1 )
 
 [node name="Clean" type="Sprite" parent="." index="2"]
 
@@ -66,6 +53,6 @@ _sections_unfolded = [ "Region" ]
 visible = false
 position = Vector2( -31.9107, 1.5724 )
 scale = Vector2( 19.6732, 22.3609 )
-shape = SubResource( 1 )
+shape = SubResource( 2 )
 
 
