@@ -1,5 +1,5 @@
-# empathy_game
-12 hour game jam on Nov 11
+# Game Jam Game
+12 hour game jam, with minimal polish
 
 
 TODO
