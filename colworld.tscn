@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=2]
+[gd_scene load_steps=16 format=2]
 
 [ext_resource path="res://tileset.tres" type="TileSet" id=1]
 [ext_resource path="res://scenes/player.tscn" type="PackedScene" id=2]
@@ -14,8 +14,9 @@
 [ext_resource path="res://scenes/Chair Kitchen.tscn" type="PackedScene" id=12]
 [ext_resource path="res://scenes/Toilet.tscn" type="PackedScene" id=13]
 [ext_resource path="res://assets/bgm.ogg" type="AudioStream" id=14]
+[ext_resource path="res://scenes/HUD.tscn" type="PackedScene" id=15]
 
-[node name="colworld" type="Node2D"]
+[node name="colworld" type="Node2D" index="0"]
 
 [node name="TileMap" type="TileMap" parent="." index="0"]
 
@@ -109,5 +110,15 @@ volume_db = -5.0
 autoplay = true
 mix_target = 0
 bus = "Master"
+
+[node name="CanvasLayer" type="CanvasLayer" parent="." index="15"]
+
+layer = 1
+offset = Vector2( 0, 0 )
+rotation = 0.0
+scale = Vector2( 1, 1 )
+transform = Transform2D( 1, 0, 0, 1, 0, 0 )
+
+[node name="HUD" parent="CanvasLayer" index="0" instance=ExtResource( 15 )]
 
 
