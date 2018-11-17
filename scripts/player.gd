@@ -182,9 +182,10 @@ func show_direction(motion):
 		$AnimatedSprite.flip_h = false
 	elif motion.y<0 && motion.x==0:
 		#up
-		$AnimatedSprite.rotation_degrees = -90
-	elif motion.y>0 && motion.x==0:
 		$AnimatedSprite.rotation_degrees = 90
+		$AnimatedSprite.flip_h = true
+	elif motion.y>0 && motion.x==0:
+		$AnimatedSprite.rotation_degrees = -90
 		
 		
 		
