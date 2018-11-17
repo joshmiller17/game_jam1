@@ -24,7 +24,6 @@ _sections_unfolded = [ "Font", "Settings" ]
 
 [node name="player" type="KinematicBody2D" index="0"]
 
-editor/display_folded = true
 input_pickable = false
 collision_layer = 1
 collision_mask = 1
@@ -45,7 +44,8 @@ _sections_unfolded = [ "Animation", "Region" ]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." index="1"]
 
-position = Vector2( 0, 1 )
+position = Vector2( -0.0610057, 0.0102005 )
+scale = Vector2( 0.448999, 0.910018 )
 shape = SubResource( 2 )
 
 [node name="AnimatedSprite" type="AnimatedSprite" parent="." index="2"]

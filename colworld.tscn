@@ -41,7 +41,6 @@ _sections_unfolded = [ "Cell", "Collision" ]
 
 [node name="player" parent="." index="1" instance=ExtResource( 2 )]
 
-editor/display_folded = false
 position = Vector2( 158.586, 1276.23 )
 scale = Vector2( 10, 10 )
 z_index = 2
@@ -154,7 +153,6 @@ position = Vector2( 1111.69, 419.868 )
 
 stream = ExtResource( 14 )
 volume_db = -5.0
-pitch_scale = 1.0
 autoplay = true
 mix_target = 0
 bus = "Master"
