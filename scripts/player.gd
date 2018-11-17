@@ -15,6 +15,11 @@ var character = "A"
 var indicators = []
 var near_interaction_object = false
 var interaction_object
+var starting_pos_A
+var starting_pos_B
+var time_since_last_interaction = 10
+var objectives = ["I need to leave for work"]
+var known_objectives = ["I need to leave for work"]
 
 #var vis_indicator = preload("res://vis_indicator.tscn")
 
@@ -91,10 +96,24 @@ func make_string_sequence(s):
 	return string
 
 func show_msg(msg):
+	$Message.text = msg
 	$Message.show()
 	$MessageTimer.start()
+	
+func objective_reminder():
+	if time_since_last_interaction > 5:
+		if randf() < 0.05:
+			show_msg(objectives[0])
+			time_since_last_interaction = 0
+		elif time_since_last_interaction > 9:
+			show_msg(objectives[0])
+			time_since_last_interaction = 0
+
 
 func _physics_process(delta):
+	time_since_last_interaction += delta
+	objective_reminder()
+	
 	var motion = Vector2()
 	if Input.is_action_pressed("move_up") and can_move("U"):
 		motion += Vector2(0, -1)
@@ -137,10 +156,8 @@ func _physics_process(delta):
 	if Input.is_action_just_pressed('interact'):
 			if near_interaction_object:
 				interaction_object.interact(character)
-				show_msg('Hello')
-				
+				time_since_last_interaction = 0
 
-			
 	if character == "B":
 		check_compulsions()
 	
