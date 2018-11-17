@@ -26,7 +26,7 @@ var b_red = true
 #var vis_indicator = preload("res://vis_indicator.tscn")
 
 func _ready():
-	$Message.hide()
+	$HUD/Message.hide()
 	pass
 
 func can_move(dir):
@@ -98,8 +98,8 @@ func make_string_sequence(s):
 	return string
 
 func show_msg(msg):
-	$Message.show()
-	$MessageTimer.start()
+	$HUD/Message.show()
+	$HUD/MessageTimer.start()
 
 func _physics_process(delta):
 	var motion = Vector2()
@@ -167,7 +167,7 @@ func _physics_process(delta):
 	
 
 func _on_MessageTimer_timeout():
-	$Message.hide()
+	$HUD/Message.hide()
 	
 func leave_room():
 	if character == "A":

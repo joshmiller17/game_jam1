@@ -1,8 +1,7 @@
-[gd_scene load_steps=7 format=2]
+[gd_scene load_steps=5 format=2]
 
 [ext_resource path="res://scripts/player.gd" type="Script" id=1]
 [ext_resource path="res://assets/animator.tres" type="SpriteFrames" id=2]
-[ext_resource path="res://assets/Poly-Regular.otf" type="DynamicFontData" id=3]
 
 [sub_resource type="StreamTexture" id=1]
 
@@ -14,14 +13,6 @@ load_path = "res://.import/character-03.png-440759c533ca95ce6e83b14012f676a3.ste
 custom_solver_bias = 0.0
 extents = Vector2( 8, 8 )
 
-[sub_resource type="DynamicFont" id=3]
-
-size = 10
-use_mipmaps = false
-use_filter = false
-font_data = ExtResource( 3 )
-_sections_unfolded = [ "Font", "Settings" ]
-
 [node name="player" type="KinematicBody2D" index="0"]
 
 input_pickable = false
@@ -30,7 +21,56 @@ collision_mask = 1
 collision/safe_margin = 0.08
 script = ExtResource( 1 )
 
-[node name="Sprite" type="Sprite" parent="." index="0"]
+[node name="Camera2D" type="Camera2D" parent="." index="0"]
+
+position = Vector2( -0.602768, -3.43063 )
+scale = Vector2( 1.78906, 1.62986 )
+anchor_mode = 1
+rotating = false
+current = true
+zoom = Vector2( 5, 5 )
+limit_left = -10000000
+limit_top = -10000000
+limit_right = 10000000
+limit_bottom = 10000000
+limit_smoothed = false
+drag_margin_h_enabled = true
+drag_margin_v_enabled = true
+smoothing_enabled = false
+smoothing_speed = 5.0
+offset_v = 0.0
+offset_h = 0.0
+drag_margin_left = 0.2
+drag_margin_top = 0.2
+drag_margin_right = 0.2
+drag_margin_bottom = 0.2
+editor_draw_screen = true
+editor_draw_limits = false
+editor_draw_drag_margin = false
+
+[node name="Clock" type="Label" parent="Camera2D" index="0"]
+
+anchor_left = 0.5
+anchor_top = 0.0
+anchor_right = 0.5
+anchor_bottom = 0.0
+margin_left = -57.0
+margin_top = -83.0
+margin_right = -4.0
+margin_bottom = -69.0
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
+mouse_filter = 2
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 1
+size_flags_vertical = 4
+text = "8:15 AM"
+percent_visible = 1.0
+lines_skipped = 0
+max_lines_visible = -1
+_sections_unfolded = [ "custom_colors", "custom_fonts" ]
+
+[node name="Sprite" type="Sprite" parent="." index="1"]
 
 visible = false
 position = Vector2( 0.170147, 0.299378 )
@@ -42,20 +82,20 @@ region_enabled = true
 region_rect = Rect2( 446, 137, 321, 301.5 )
 _sections_unfolded = [ "Animation", "Region" ]
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="." index="1"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." index="2"]
 
 position = Vector2( -0.0610057, 0.0102005 )
 scale = Vector2( 0.448999, 0.910018 )
 shape = SubResource( 2 )
 
-[node name="AnimatedSprite" type="AnimatedSprite" parent="." index="2"]
+[node name="AnimatedSprite" type="AnimatedSprite" parent="." index="3"]
 
 scale = Vector2( 0.05, 0.05 )
 frames = ExtResource( 2 )
 animation = "a_static"
 _sections_unfolded = [ "Transform" ]
 
-[node name="HUD" type="Node2D" parent="." index="3"]
+[node name="HUD" type="Node2D" parent="." index="4"]
 
 [node name="Message" type="Label" parent="HUD" index="0"]
 
@@ -63,17 +103,16 @@ anchor_left = 0.0
 anchor_top = 0.0
 anchor_right = 0.0
 anchor_bottom = 0.0
-margin_left = -11.0
-margin_top = -33.0
-margin_right = 11.0
-margin_bottom = -19.0
+margin_left = -10.0
+margin_top = -26.0
+margin_right = 12.0
+margin_bottom = -12.0
 rect_pivot_offset = Vector2( 0, 0 )
 rect_clip_content = false
 mouse_filter = 2
 mouse_default_cursor_shape = 0
 size_flags_horizontal = 1
 size_flags_vertical = 4
-custom_fonts/font = SubResource( 3 )
 text = "Test"
 percent_visible = 1.0
 lines_skipped = 0
@@ -85,6 +124,20 @@ _sections_unfolded = [ "custom_fonts" ]
 process_mode = 1
 wait_time = 1.0
 one_shot = true
+autostart = false
+
+[node name="ClockTimer" type="Timer" parent="HUD" index="2"]
+
+process_mode = 1
+wait_time = 1.0
+one_shot = false
+autostart = false
+
+[node name="flash" type="Timer" parent="HUD" index="3"]
+
+process_mode = 1
+wait_time = 1.0
+one_shot = false
 autostart = false
 
 [connection signal="timeout" from="HUD/MessageTimer" to="." method="_on_MessageTimer_timeout"]
