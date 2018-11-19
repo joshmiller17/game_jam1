@@ -17,14 +17,28 @@ var near_interaction_object = false
 var interaction_object
 var starting_pos_A
 var starting_pos_B
-var time_since_last_interaction = 10
-var objectives = ["I need to leave for work"]
-var known_objectives = ["I need to leave for work"]
+var time_since_last_interaction = 0
+var a_objectives = ["email", "coffee"]
+var b_objectives = ["stove", "door", "mess", "bed"]
+var objectives = []
+var stove_checked = 0
+
+# A's todo list:
+	# check email
+	# have coffee
+	# leave by door
+	
+# B's todo list:
+	# all objects !messy
+	# check stove a few times
+	# leave by door
 
 #var vis_indicator = preload("res://vis_indicator.tscn")
 
 func _ready():
 	$Message.hide()
+	check_objectives()
+	show_msg("I'm going to be late for work...")
 	pass
 
 func can_move(dir):
@@ -100,15 +114,55 @@ func show_msg(msg):
 	$Message.show()
 	$MessageTimer.start()
 	
+
 func objective_reminder():
 	if time_since_last_interaction > 5:
 		if randf() < 0.05:
-			show_msg(objectives[0])
+			send_reminder();
 			time_since_last_interaction = 0
 		elif time_since_last_interaction > 9:
-			show_msg(objectives[0])
+			send_reminder();
 			time_since_last_interaction = 0
 
+func send_reminder():
+	if len(objectives) < 1:
+		show_msg("I should leave for work now.")
+	elif character == "A":
+		if objectives[0] == "email":
+			show_msg("I need to check my email first.")
+		elif objectives[0] == "coffee":
+			show_msg("I should have some coffee first.")
+	else:
+		var r = randi() % len(objectives)
+		if objectives[r] == "mess":
+			show_msg("This place is a mess, I should really fix that first.")
+		elif objectives[r] == "stove":
+			show_msg("Did my roommate leave the stove on?")
+		elif objectives[r] == "bed":
+			show_msg("I need to make my bed first.")
+		elif objectives[r] == "door":
+			show_msg("I should make sure all the doors are locked.")
+
+func check_objectives():
+	var root = get_tree().get_root().get_node("colworld")
+	var doors_closed = not (root.get_node("Door").messy or root.get_node("Door2").messy)
+	var bed_cleaned = not not root.get_node("Bed").messy
+	var mess_cleaned = not (root.get_node("Chair Living").messy 
+						or root.get_node("Wardrobe").messy
+						or root.get_node("Sofa").messy
+						or root.get_node("Chair Kitchen").messy
+						or root.get_node("Toilet").messy
+						or root.get_node("Laptop").messy
+						)
+	# TODO stove
+	# TODO coffee
+	# TODO email
+	
+	if character == "A":
+		objectives = a_objectives
+	else:
+		objectives = b_objectives
+	
 
 func _physics_process(delta):
 	time_since_last_interaction += delta
@@ -174,20 +228,27 @@ func _physics_process(delta):
 			interaction_object = get_slide_collision(0).get_collider()
 			near_interaction_object = true
 			
+	check_leaving()
 	
 
 func _on_MessageTimer_timeout():
 	$Message.hide()
 	
-func leave_room():
-	if character == "A":
-		character = "B"
-		hide()
-		position = b_start_loc
-		# TODO change sprite
-		show()
-	#if character == "B":
-	#	get_tree().quit()
+func check_leaving():
+	if position.x > 3760:
+		if len(objectives) < 1:
+			if character == "A":
+				character = "B"
+				check_objectives()
+				hide()
+				position = b_start_loc
+				show()
+			if character == "B":
+				get_tree().quit()
+		else:
+			show_msg("I can't leave for work yet")
+			objective_reminder()
+
 
 func show_direction(motion):
 	if motion.x<0 && motion.y==0:

@@ -5,7 +5,7 @@ extends StaticBody2D
 # var b = "textvar"
 var table = 'empty'
 var mug_cleared = true
-var stain_visiable = false
+var stain_visible = false
 func show_mug():
 	$Mug.show()
 	$Sip.playing = true
@@ -27,7 +27,7 @@ func interact(type):
 		show_mug()
 	elif type == 'B' and !mug_cleared:
 		show_stain()
-	elif type == 'B' and !stain_visiable:
+	elif type == 'B' and !stain_visible:
 		clear_stain()
 #func _process(delta):
 #	# Called every frame. Delta is time since last frame.

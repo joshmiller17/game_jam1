@@ -5,6 +5,8 @@ extends StaticBody2D
 # var b = "textvar"
 
 export (bool) var messy
+export (bool) var two_way
+
 func _ready():
 	# Called when the node is added to the scene for the first time.
 	# Initialization here
@@ -22,14 +24,14 @@ func _ready():
 
 
 func interact(type):
-	if messy and type =='B':
+	if messy and (two_way or type =='B'):
 		$CleanCollision.disabled = false
 		$Clean.show()
 		$MessyCollision.disabled = true
 		$Messy.hide()
 		$CleanSound.playing = true
 		messy = false
-	elif !messy and type == 'A':
+	elif !messy and (two_way or type == 'A'):
 		$CleanCollision.disabled = true
 		$Clean.hide()
 		$MessyCollision.disabled = false
