@@ -1,26 +1,22 @@
 [gd_scene load_steps=3 format=2]
 
-[ext_resource path="res://assets/invis.png" type="Texture" id=1]
+[ext_resource path="res://assets/obstacle.png" type="Texture" id=1]
 
 [sub_resource type="RectangleShape2D" id=1]
 
 custom_solver_bias = 0.0
-extents = Vector2( 10, 10 )
+extents = Vector2( 8.4387, 8.35663 )
 
-[node name="Node2D" type="Node2D"]
+[node name="Node" type="Node" index="0"]
 
-[node name="obstacle" type="Sprite" parent="." index="0"]
+[node name="Tile" type="Sprite" parent="." index="0"]
 
-visible = false
-position = Vector2( 0.417595, -0.0402155 )
-scale = Vector2( 1.28864, 1.27995 )
+scale = Vector2( 5, 5 )
 texture = ExtResource( 1 )
-_sections_unfolded = [ "Visibility" ]
+_sections_unfolded = [ "Transform" ]
 
-[node name="StaticBody2D" type="StaticBody2D" parent="obstacle" index="0"]
+[node name="StaticBody2D" type="StaticBody2D" parent="Tile" index="0"]
 
-position = Vector2( -0.324058, 0.0314195 )
-scale = Vector2( 0.776011, 0.781278 )
 input_pickable = false
 collision_layer = 1
 collision_mask = 1
@@ -29,11 +25,8 @@ constant_angular_velocity = 0.0
 friction = 1.0
 bounce = 0.0
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="obstacle/StaticBody2D" index="0"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Tile/StaticBody2D" index="0"]
 
-position = Vector2( 0.873852, -0.300756 )
-scale = Vector2( 1.08067, 1.03658 )
 shape = SubResource( 1 )
-_sections_unfolded = [ "Visibility" ]
 
 
