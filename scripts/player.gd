@@ -22,24 +22,22 @@ var a_objectives = ["email", "coffee"]
 var b_objectives = ["stove", "door", "mess", "bed"]
 var objectives = []
 var stove_checked = 0
-
-# A's todo list:
-	# check email
-	# have coffee
-	# leave by door
+var stove_off
+var mess_cleaned
+var doors_closed
+var bed_cleaned
 	
-# B's todo list:
-	# all objects !messy
-	# check stove a few times
-	# leave by door
+
 
 #var vis_indicator = preload("res://vis_indicator.tscn")
 
 func _ready():
 	$Message.hide()
+	var screen_size = OS.get_screen_size()
+	var window_size = OS.get_window_size()
+	OS.set_window_position(screen_size*0.5 - window_size*0.5)
 	check_objectives()
 	show_msg("I'm going to be late for work...")
-	pass
 
 func can_move(dir):
 	return necessary_input == "" or necessary_input.substr(0,1) == dir;
@@ -89,6 +87,7 @@ func show_where_to_go():
 	show_direction(m)
 
 func check_compulsions():
+	return # TODO delete
 	if input_sequence.ends_with("LR") and necessary_input == "":
 		necessary_input += make_string_sequence("LR")
 	if input_sequence.ends_with("RL") and necessary_input == "":
@@ -145,24 +144,39 @@ func send_reminder():
 
 func check_objectives():
 	var root = get_tree().get_root().get_node("colworld")
-	var doors_closed = not (root.get_node("Door").messy or root.get_node("Door2").messy)
-	var bed_cleaned = not not root.get_node("Bed").messy
-	var mess_cleaned = not (root.get_node("Chair Living").messy 
+	stove_off = not root.get_node("Stove").messy
+	doors_closed = not (root.get_node("Door").messy or root.get_node("Door2").messy)
+	bed_cleaned = not root.get_node("Bed").messy
+	mess_cleaned = not (root.get_node("Chair Living").messy 
 						or root.get_node("Wardrobe").messy
 						or root.get_node("Sofa").messy
 						or root.get_node("Chair Kitchen").messy
 						or root.get_node("Toilet").messy
 						or root.get_node("Laptop").messy
 						)
-	# TODO stove
-	# TODO coffee
-	# TODO email
 	
 	if character == "A":
 		objectives = a_objectives
 	else:
 		objectives = b_objectives
 	
+func check_interaction_complete(interaction_object):
+	if character == "A":
+		if interaction_object.get_name() == "Laptop" and objectives[0] == "email":
+			objectives.erase("email")
+		if interaction_object.get_name() == "Coffee_Mug" and objectives[0] == "coffee":
+			objectives.erase("coffee")
+	else:
+		check_objectives()
+		objectives = b_objectives #["stove", "door", "mess", "bed"]
+		if mess_cleaned:
+			objectives.erase("mess")
+		if doors_closed:
+			objectives.erase("door")
+		if bed_cleaned:
+			objectives.erase("bed")
+		if stove_off:
+			objectives.erase("stove")
 
 func _physics_process(delta):
 	time_since_last_interaction += delta
@@ -209,7 +223,8 @@ func _physics_process(delta):
 	
 	if Input.is_action_just_pressed('interact'):
 			if near_interaction_object:
-				interaction_object.interact(character)
+				var obj_is_messy = interaction_object.interact(character)
+				check_interaction_complete(interaction_object)
 				time_since_last_interaction = 0
 
 	if character == "B":
@@ -245,7 +260,7 @@ func check_leaving():
 				hide()
 				position = b_start_loc
 				show()
-			if character == "B":
+			elif character == "B":
 				get_tree().quit()
 		else:
 			show_msg("I can't leave for work yet")

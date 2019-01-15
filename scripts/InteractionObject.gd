@@ -38,6 +38,7 @@ func interact(type):
 		$Messy.show()		
 		$MessySound.playing = true
 		messy = true
+	return messy
 	
 func _process(delta):
 	# Called every frame. Delta is time since last frame.
