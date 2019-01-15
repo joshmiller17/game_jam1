@@ -4,7 +4,7 @@ extends KinematicBody2D
 # move_and_slide works.
 
 # Member variables
-const MOTION_SPEED = 600 # Pixels/second
+const MOTION_SPEED = 1200 # Pixels/second
 
 var b_start_loc = Vector2(100,100)
 var obsession_level = 3
@@ -227,6 +227,8 @@ func _physics_process(delta):
 		if (get_slide_collision(0).get_collider()).is_class('StaticBody2D'):
 			interaction_object = get_slide_collision(0).get_collider()
 			near_interaction_object = true
+	else:
+		near_interaction_object = false
 			
 	check_leaving()
 	

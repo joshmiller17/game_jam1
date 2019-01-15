@@ -15,7 +15,7 @@ extents = Vector2( 14.6085, 13.9472 )
 custom_solver_bias = 0.0
 extents = Vector2( 17.815, 7.36762 )
 
-[node name="Wardrobe" type="StaticBody2D"]
+[node name="Wardrobe" type="StaticBody2D" index="0"]
 
 input_pickable = false
 collision_layer = 1
@@ -27,6 +27,7 @@ bounce = 0.0
 script = ExtResource( 1 )
 _sections_unfolded = [ "Transform" ]
 messy = false
+two_way = null
 
 [node name="Messy" type="Sprite" parent="." index="0"]
 
@@ -38,9 +39,8 @@ _sections_unfolded = [ "Region", "Transform" ]
 
 [node name="MessyCollision" type="CollisionShape2D" parent="." index="1"]
 
-visible = false
-position = Vector2( -0.447578, 162.715 )
-scale = Vector2( 24.3786, 22.3609 )
+position = Vector2( -0.447578, -24.0627 )
+scale = Vector2( 24.3786, 11.3397 )
 shape = SubResource( 1 )
 
 [node name="Clean" type="Sprite" parent="." index="2"]
@@ -62,7 +62,6 @@ shape = SubResource( 2 )
 
 stream = ExtResource( 3 )
 volume_db = 0.0
-pitch_scale = 1.0
 autoplay = false
 max_distance = 2000.0
 attenuation = 1.0
@@ -73,7 +72,6 @@ area_mask = 1
 
 stream = ExtResource( 4 )
 volume_db = 0.0
-pitch_scale = 1.0
 autoplay = false
 max_distance = 2000.0
 attenuation = 1.0

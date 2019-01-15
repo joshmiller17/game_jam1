@@ -16,7 +16,7 @@
 [ext_resource path="res://scenes/HUD.tscn" type="PackedScene" id=14]
 [ext_resource path="res://tileset.tres" type="TileSet" id=15]
 
-[node name="colworld" type="Node2D" index="0"]
+[node name="colworld" type="Node2D"]
 
 [node name="player" parent="." index="0" instance=ExtResource( 1 )]
 
@@ -68,7 +68,6 @@ two_way = true
 
 position = Vector2( -2613.83, -1466.67 )
 messy = true
-two_way = null
 
 [node name="Laptop" parent="." index="9" instance=ExtResource( 9 )]
 
