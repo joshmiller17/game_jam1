@@ -13,7 +13,7 @@ load_path = "res://.import/character-03.png-440759c533ca95ce6e83b14012f676a3.ste
 custom_solver_bias = 0.0
 extents = Vector2( 8, 8 )
 
-[node name="player" type="KinematicBody2D"]
+[node name="player" type="KinematicBody2D" index="0"]
 
 input_pickable = false
 collision_layer = 1
@@ -105,6 +105,15 @@ wait_time = 1.0
 one_shot = false
 autostart = false
 
+[node name="IndicatorTimer" type="Timer" parent="." index="6"]
+
+process_mode = 1
+wait_time = 0.5
+one_shot = true
+autostart = false
+
 [connection signal="timeout" from="MessageTimer" to="." method="_on_MessageTimer_timeout"]
+
+[connection signal="timeout" from="IndicatorTimer" to="." method="_on_IndicatorTimer_timeout"]
 
 

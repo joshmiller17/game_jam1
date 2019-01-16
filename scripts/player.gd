@@ -29,7 +29,7 @@ var bed_cleaned
 	
 
 
-#var vis_indicator = preload("res://vis_indicator.tscn")
+var indicator = preload("res://scenes/indicator.tscn")
 
 func _ready():
 	$Message.hide()
@@ -40,10 +40,21 @@ func _ready():
 	show_msg("I'm going to be late for work...")
 
 func can_move(dir):
-	return necessary_input == "" or necessary_input.substr(0,1) == dir;
+	if necessary_input == "" or necessary_input.substr(0,1) == dir:
+		return true
+	else:
+		var to_go = necessary_input.substr(0,1)
+		# TODO add visual indicator for a moment
+		# rotate if necessary
+		var ind = indicator.instance()
+		indicators.append(weakref(ind))
+		show_where_to_go(ind)
+		add_child(ind)
+		$IndicatorTimer.start()
+		return false
 	
 func update_move(dir):
-#	clear_indicators()
+	clear_indicators()
 	if character == "A":
 		pass
 		
@@ -55,39 +66,34 @@ func update_move(dir):
 			if necessary_input == "":
 				input_sequence = ""
 
-#func clear_indicators():
-#	for indicator_ref in indicators:
-#		if indicator_ref.get_ref():
-#			indicator_ref.get_ref().queue_free()
-#			indicators.erase(indicator_ref)
+func clear_indicators():
+	for indicator_ref in indicators:
+		if indicator_ref.get_ref():
+			indicator_ref.get_ref().queue_free()
+			indicators.erase(indicator_ref)
 
-func show_where_to_go():
-#	clear_indicators()
+func show_where_to_go(ind):
 	var dir_needed = necessary_input.substr(0,1)
-#	var ind = vis_indicator.instance()
-#	indicators.append(weakref(ind))
-#	add_child(ind)
 	var m = Vector2()
 	if dir_needed == "U":
 		m.x=0
 		m.y=-1
-#		ind.set_position(Vector2(0, -50))
+		ind.set_position(Vector2(0, -50))
 	if dir_needed == "L":
 		m.x=-1
 		m.y=0
-#		ind.set_position(Vector2(-50, 0))
+		ind.set_position(Vector2(-50, 0))
 	if dir_needed == "D":
 		m.x=0
 		m.y=1
-#		ind.set_position(Vector2(0, 50))
+		ind.set_position(Vector2(0, 50))
 	if dir_needed == "R":
 		m.x=1
 		m.y=0
-#		ind.set_position(Vector2(50, 0))
+		ind.set_position(Vector2(50, 0))
 	show_direction(m)
 
 func check_compulsions():
-	return # TODO delete
 	if input_sequence.ends_with("LR") and necessary_input == "":
 		necessary_input += make_string_sequence("LR")
 	if input_sequence.ends_with("RL") and necessary_input == "":
@@ -186,23 +192,15 @@ func _physics_process(delta):
 	if Input.is_action_pressed("move_up") and can_move("U"):
 		motion += Vector2(0, -1)
 		update_move("U")
-	else:
-		show_where_to_go()
 	if Input.is_action_pressed("move_bottom") and can_move("D"):
 		motion += Vector2(0, 1)
 		update_move("D")
-	else:
-		show_where_to_go()
 	if Input.is_action_pressed("move_left") and can_move("L"):
 		motion += Vector2(-1, 0)
 		update_move("L")
-	else:
-		show_where_to_go()
 	if Input.is_action_pressed("move_right") and can_move("R"):
 		motion += Vector2(1, 0)
 		update_move("R")
-	else:
-		show_where_to_go()
 	
 	if motion.length()>0:
 		if character == "A":
@@ -285,3 +283,7 @@ func show_direction(motion):
 		
 		
 		
+
+
+func _on_IndicatorTimer_timeout():
+	clear_indicators()
