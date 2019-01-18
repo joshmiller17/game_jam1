@@ -7,10 +7,10 @@ path="res://.import/indicator.png-740da2a3433db51a7f665c61673dc201.stex"
 [deps]
 
 source_file="res://assets/indicator.png"
-source_md5="eb50a64e6c27d45b2af15ec23dcf8f63"
+source_md5="c7945e4c6089fd09ab57c02c79ad383e"
 
 dest_files=[ "res://.import/indicator.png-740da2a3433db51a7f665c61673dc201.stex" ]
-dest_md5="d3cccf004bbbded9b69a44623125c505"
+dest_md5="67a05ac98d4225eb2399a6f9f93a192e"
 
 [params]
 

@@ -44,8 +44,6 @@ func can_move(dir):
 		return true
 	else:
 		var to_go = necessary_input.substr(0,1)
-		# TODO add visual indicator for a moment
-		# rotate if necessary
 		var ind = indicator.instance()
 		indicators.append(weakref(ind))
 		show_where_to_go(ind)
@@ -78,19 +76,19 @@ func show_where_to_go(ind):
 	if dir_needed == "U":
 		m.x=0
 		m.y=-1
-		ind.set_position(Vector2(0, -50))
+		ind.set_position(Vector2(0, -100))
 	if dir_needed == "L":
 		m.x=-1
 		m.y=0
-		ind.set_position(Vector2(-50, 0))
+		ind.set_position(Vector2(-100, 0))
 	if dir_needed == "D":
 		m.x=0
 		m.y=1
-		ind.set_position(Vector2(0, 50))
+		ind.set_position(Vector2(0, 100))
 	if dir_needed == "R":
 		m.x=1
 		m.y=0
-		ind.set_position(Vector2(50, 0))
+		ind.set_position(Vector2(100, 0))
 	show_direction(m)
 
 func check_compulsions():
