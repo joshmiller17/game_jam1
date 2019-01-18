@@ -34,9 +34,6 @@ var indicator = preload("res://scenes/indicator.tscn")
 
 func _ready():
 	$Message.hide()
-	var screen_size = OS.get_screen_size()
-	var window_size = OS.get_window_size()
-	OS.set_window_position(screen_size*0.5 - window_size*0.5)
 	check_objectives()
 	show_msg("I'm going to be late for work...")
 	get_tree().get_root().get_node("colworld").get_node("BGM").play(0)
