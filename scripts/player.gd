@@ -26,7 +26,7 @@ var stove_off
 var mess_cleaned
 var doors_closed
 var bed_cleaned
-var repeat_counter = 16
+var repeat_counter = 20
 	
 
 

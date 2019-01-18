@@ -31,9 +31,10 @@ func _on_ClockTimer_timeout():
 	if late and not timer_started: # we're very late
 		$flash.start()
 		timer_started = true
-	if hour > 12:
-		hour = 0
+	if hour > 11:
 		pm = not pm
+	if hour > 12:
+		hour = 1
 	if hour < 10:
 		if pm:
 			$Clock.text = "%01d:%02d PM" % [hour, minute]
