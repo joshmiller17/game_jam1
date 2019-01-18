@@ -7,12 +7,12 @@
 [sub_resource type="RectangleShape2D" id=1]
 
 custom_solver_bias = 0.0
-extents = Vector2( 12.6469, 12.6713 )
+extents = Vector2( 8.39587, 12.6713 )
 
 [sub_resource type="RectangleShape2D" id=2]
 
 custom_solver_bias = 0.0
-extents = Vector2( 10.4927, 11.2234 )
+extents = Vector2( 7.32925, 9.91946 )
 
 [node name="Chair Living" type="StaticBody2D"]
 
@@ -38,9 +38,8 @@ _sections_unfolded = [ "Region" ]
 
 [node name="MessyCollision" type="CollisionShape2D" parent="." index="1"]
 
-visible = false
-position = Vector2( 0.669067, 1.83628 )
-scale = Vector2( 24.3786, 22.3609 )
+position = Vector2( 0.669067, 2.16587 )
+scale = Vector2( 24.3786, 17.182 )
 shape = SubResource( 1 )
 
 [node name="Clean" type="Sprite" parent="." index="2"]

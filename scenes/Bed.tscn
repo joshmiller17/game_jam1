@@ -7,12 +7,12 @@
 [sub_resource type="RectangleShape2D" id=1]
 
 custom_solver_bias = 0.0
-extents = Vector2( 16.5887, 23.0543 )
+extents = Vector2( 16.5887, 21.5002 )
 
 [sub_resource type="RectangleShape2D" id=2]
 
 custom_solver_bias = 0.0
-extents = Vector2( 16.6691, 22.792 )
+extents = Vector2( 16.6691, 18.2926 )
 
 [node name="Bed" type="StaticBody2D"]
 
@@ -38,8 +38,8 @@ _sections_unfolded = [ "Region" ]
 [node name="MessyCollision" type="CollisionShape2D" parent="." index="1"]
 
 visible = false
-position = Vector2( -5.3511, -0.496422 )
-scale = Vector2( 24.3786, 22.3609 )
+position = Vector2( 26.9857, 52.722 )
+scale = Vector2( 13.7129, 20.3183 )
 shape = SubResource( 1 )
 
 [node name="Clean" type="Sprite" parent="." index="2"]
@@ -52,9 +52,8 @@ _sections_unfolded = [ "Region" ]
 
 [node name="CleanCollision" type="CollisionShape2D" parent="." index="3"]
 
-visible = false
-position = Vector2( 0.509979, -2.84624 )
-scale = Vector2( 19.6732, 22.3609 )
+position = Vector2( -35.1324, -2.84624 )
+scale = Vector2( 17.8611, 22.3609 )
 shape = SubResource( 2 )
 
 [node name="MessySound" type="AudioStreamPlayer2D" parent="." index="4"]

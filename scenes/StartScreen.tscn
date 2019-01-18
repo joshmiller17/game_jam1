@@ -5,7 +5,7 @@
 [ext_resource path="res://assets/alarm_clock.wav" type="AudioStream" id=3]
 [ext_resource path="res://scenes/small_font.tres" type="DynamicFont" id=4]
 
-[node name="StartScreen" type="Node" index="0"]
+[node name="StartScreen" type="Node"]
 
 script = ExtResource( 1 )
 

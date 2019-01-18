@@ -27,6 +27,8 @@ var mess_cleaned
 var doors_closed
 var bed_cleaned
 var repeat_counter = 20
+var colroot
+var obj_list = ["Door", "Door2", "Coffee_Mug", "Bed", "Chair Living", "Stove", "Wardrobe", "Laptop", "Sofa", "Chair Kitchen", "Toilet"]
 	
 
 
@@ -37,6 +39,7 @@ func _ready():
 	check_objectives()
 	show_msg("I'm going to be late for work...")
 	get_tree().get_root().get_node("colworld").get_node("BGM").play(0)
+	colroot =  get_tree().get_root().get_node("colworld")
 	
 
 func can_move(dir):
@@ -227,6 +230,11 @@ func _physics_process(delta):
 				var obj_is_messy = interaction_object.interact(character)
 				check_interaction_complete(interaction_object)
 				time_since_last_interaction = 0
+					
+				# TEST
+				var dist = self.position.distance_to(interaction_object.position)
+				print(dist)
+			
 
 	if character == "B":
 		check_compulsions()
@@ -239,39 +247,53 @@ func _physics_process(delta):
 	motion = motion.normalized() * MOTION_SPEED
 
 	move_and_slide(motion)
-	if get_slide_count() != 0 :
-		if(get_slide_collision(0) != null):
-			if (get_slide_collision(0).get_collider()).is_class('StaticBody2D'):
-				interaction_object = get_slide_collision(0).get_collider()
-				near_interaction_object = true
-		else:
-			near_interaction_object = false
-	else:
-		near_interaction_object = false
-			
+	
+	near_interaction_object = check_near_object()
 	check_leaving()
+	
+func check_near_object():
+#	if get_slide_count() != 0 :
+#		if(get_slide_collision(0) != null):
+#			if (get_slide_collision(0).get_collider()).is_class('StaticBody2D'):
+#				interaction_object = get_slide_collision(0).get_collider()
+#				near_interaction_object = true
+#		else:
+#			near_interaction_object = false
+#	else:
+#		near_interaction_object = false
+	var thing
+	var dist
+	for ob in obj_list:
+		thing = colroot.get_node(ob)
+		dist = self.position.distance_to(thing.position)
+		if dist < 500:
+			interaction_object = thing
+			return true
+	return false
 	
 
 func _on_MessageTimer_timeout():
 	$Message.hide()
 	
 func check_leaving():
-	if position.x > 3760:
+	if position.x > 3680:
 		if len(objectives) < 1:
-			if character == "A":
-				get_tree().get_root().get_node("colworld").get_node("BGM").stop()
-				character = "B"
-				check_objectives()
-				hide()
-				position = b_start_loc
-				show()
-				$BTimer.start()
-			elif character == "B":
-				get_tree().quit()
+			switch_characters()
 		else:
 			send_reminder()
 			#show_msg("I can't leave for work yet.")
 			
+func switch_characters():
+	if character == "A":
+		get_tree().get_root().get_node("colworld").get_node("BGM").stop()
+		character = "B"
+		check_objectives()
+		hide()
+		position = b_start_loc
+		show()
+		$BTimer.start()
+	elif character == "B":
+		get_tree().quit()
 
 
 func show_direction(motion):
@@ -295,8 +317,7 @@ func _on_IndicatorTimer_timeout():
 	clear_indicators()
 
 func _on_BGM_finished():
-	if character == "B":
-			get_tree().quit()
+	switch_characters()
 
 
 func _on_BTimer_timeout():
