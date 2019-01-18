@@ -7,10 +7,10 @@ path="res://.import/stove.wav-23b45d029a95cede4c344e68d6e14d81.sample"
 [deps]
 
 source_file="res://assets/stove.wav"
-source_md5="447d48fc44107703cadbda6854282593"
+source_md5="fe04e50a3a6e2e4657f85642bc07d216"
 
 dest_files=[ "res://.import/stove.wav-23b45d029a95cede4c344e68d6e14d81.sample" ]
-dest_md5="d6ffdaf0c1424e19c727dbbd88bc9525"
+dest_md5="158bdf3f1ca788b2f330d578fd01a358"
 
 [params]
 

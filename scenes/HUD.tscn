@@ -10,7 +10,7 @@ script = ExtResource( 1 )
 [node name="ClockTimer" type="Timer" parent="." index="0"]
 
 process_mode = 1
-wait_time = 1.0
+wait_time = 0.5
 one_shot = false
 autostart = true
 

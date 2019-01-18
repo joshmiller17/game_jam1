@@ -7,10 +7,10 @@ path="res://.import/sink.wav-6e4c6d334dce77fe5e68055b03dbe38d.sample"
 [deps]
 
 source_file="res://assets/sink.wav"
-source_md5="9d40ae2dd3900c26fefc70f300052451"
+source_md5="572c6072688a1d9a91c44e26781335ae"
 
 dest_files=[ "res://.import/sink.wav-6e4c6d334dce77fe5e68055b03dbe38d.sample" ]
-dest_md5="0d5f6fe066841bcbbcd381b6337c8283"
+dest_md5="24d46e866c241e895010cbfe494becc4"
 
 [params]
 

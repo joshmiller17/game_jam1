@@ -22,6 +22,7 @@ bounce = 0.0
 script = ExtResource( 1 )
 _sections_unfolded = [ "Transform" ]
 messy = false
+two_way = null
 
 [node name="Messy" type="Sprite" parent="." index="0"]
 
@@ -55,8 +56,7 @@ shape = SubResource( 1 )
 [node name="MessySound" type="AudioStreamPlayer2D" parent="." index="4"]
 
 stream = ExtResource( 3 )
-volume_db = 0.0
-pitch_scale = 1.0
+volume_db = -10.0
 autoplay = false
 max_distance = 2000.0
 attenuation = 1.0
@@ -67,7 +67,6 @@ area_mask = 1
 
 stream = ExtResource( 4 )
 volume_db = 0.0
-pitch_scale = 1.0
 autoplay = false
 max_distance = 2000.0
 attenuation = 1.0

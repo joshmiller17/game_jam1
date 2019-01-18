@@ -7,10 +7,10 @@ path="res://.import/bed.wav-25b5a24ad0c22dc40524948ccba16c08.sample"
 [deps]
 
 source_file="res://assets/bed.wav"
-source_md5="6be133195b5418b430722404c46567e8"
+source_md5="c60aa6f0bd525dcd82e65a124a07985d"
 
 dest_files=[ "res://.import/bed.wav-25b5a24ad0c22dc40524948ccba16c08.sample" ]
-dest_md5="3a10fc120c3970b364362d7d71ce2234"
+dest_md5="fb3b25dc95f4157400fa4420d7aa4071"
 
 [params]
 

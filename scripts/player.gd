@@ -6,7 +6,7 @@ extends KinematicBody2D
 # Member variables
 const MOTION_SPEED = 1200 # Pixels/second
 
-var b_start_loc = Vector2(100,100)
+var b_start_loc = Vector2(160,1280)
 var obsession_level = 3
 var input_sequence = ""
 var last_input = ""
@@ -26,6 +26,7 @@ var stove_off
 var mess_cleaned
 var doors_closed
 var bed_cleaned
+var repeat_counter = 16
 	
 
 
@@ -38,6 +39,8 @@ func _ready():
 	OS.set_window_position(screen_size*0.5 - window_size*0.5)
 	check_objectives()
 	show_msg("I'm going to be late for work...")
+	get_tree().get_root().get_node("colworld").get_node("BGM").play(0)
+	
 
 func can_move(dir):
 	if necessary_input == "" or necessary_input.substr(0,1) == dir:
@@ -165,11 +168,12 @@ func check_objectives():
 		objectives = b_objectives
 	
 func check_interaction_complete(interaction_object):
-	if character == "A":
-		if interaction_object.get_name() == "Laptop" and objectives[0] == "email":
-			objectives.erase("email")
-		if interaction_object.get_name() == "Coffee_Mug" and objectives[0] == "coffee":
-			objectives.erase("coffee")
+	if character == "A" and len(objectives) > 0:
+			for o in objectives:
+				if interaction_object.get_name() == "Laptop" and o == "email":
+					objectives.erase("email")
+				if interaction_object.get_name() == "Coffee_Mug" and o == "coffee":
+					objectives.erase("coffee")
 	else:
 		check_objectives()
 		objectives = b_objectives #["stove", "door", "mess", "bed"]
@@ -187,18 +191,22 @@ func _physics_process(delta):
 	objective_reminder()
 	
 	var motion = Vector2()
-	if Input.is_action_pressed("move_up") and can_move("U"):
-		motion += Vector2(0, -1)
-		update_move("U")
-	if Input.is_action_pressed("move_bottom") and can_move("D"):
-		motion += Vector2(0, 1)
-		update_move("D")
-	if Input.is_action_pressed("move_left") and can_move("L"):
-		motion += Vector2(-1, 0)
-		update_move("L")
-	if Input.is_action_pressed("move_right") and can_move("R"):
-		motion += Vector2(1, 0)
-		update_move("R")
+	if character == "B" and ((Input.is_action_pressed("move_up") or Input.is_action_pressed("move_down")) \
+		and (Input.is_action_pressed("move_left") or Input.is_action_pressed("move_right"))) :
+			pass
+	else:
+		if Input.is_action_pressed("move_up") and can_move("U"):
+			motion += Vector2(0, -1)
+			update_move("U")
+		if Input.is_action_pressed("move_bottom") and can_move("D"):
+			motion += Vector2(0, 1)
+			update_move("D")
+		if Input.is_action_pressed("move_left") and can_move("L"):
+			motion += Vector2(-1, 0)
+			update_move("L")
+		if Input.is_action_pressed("move_right") and can_move("R"):
+			motion += Vector2(1, 0)
+			update_move("R")
 	
 	if motion.length()>0:
 		if character == "A":
@@ -234,10 +242,13 @@ func _physics_process(delta):
 	motion = motion.normalized() * MOTION_SPEED
 
 	move_and_slide(motion)
-	if(get_slide_collision(0) != null):
-		if (get_slide_collision(0).get_collider()).is_class('StaticBody2D'):
-			interaction_object = get_slide_collision(0).get_collider()
-			near_interaction_object = true
+	if get_slide_count() != 0 :
+		if(get_slide_collision(0) != null):
+			if (get_slide_collision(0).get_collider()).is_class('StaticBody2D'):
+				interaction_object = get_slide_collision(0).get_collider()
+				near_interaction_object = true
+		else:
+			near_interaction_object = false
 	else:
 		near_interaction_object = false
 			
@@ -251,16 +262,19 @@ func check_leaving():
 	if position.x > 3760:
 		if len(objectives) < 1:
 			if character == "A":
+				get_tree().get_root().get_node("colworld").get_node("BGM").stop()
 				character = "B"
 				check_objectives()
 				hide()
 				position = b_start_loc
 				show()
+				$BTimer.start()
 			elif character == "B":
 				get_tree().quit()
 		else:
-			show_msg("I can't leave for work yet")
-			objective_reminder()
+			send_reminder()
+			#show_msg("I can't leave for work yet.")
+			
 
 
 func show_direction(motion):
@@ -279,9 +293,19 @@ func show_direction(motion):
 		$AnimatedSprite.rotation_degrees = -90
 		
 		
-		
-		
-
 
 func _on_IndicatorTimer_timeout():
 	clear_indicators()
+
+func _on_BGM_finished():
+	if character == "B":
+			get_tree().quit()
+
+
+func _on_BTimer_timeout():
+	get_tree().get_root().get_node("colworld").get_node("BGM").play(0)
+	if repeat_counter < 1:
+		$BTimer.stop()
+	else:
+		repeat_counter -= 1
+	

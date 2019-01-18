@@ -23,7 +23,6 @@ _sections_unfolded = [ "Transform" ]
 
 [node name="Mug" type="Sprite" parent="." index="0"]
 
-visible = false
 texture = ExtResource( 2 )
 region_enabled = true
 region_rect = Rect2( 2958.09, 256.2, 128, 86 )
@@ -46,8 +45,7 @@ _sections_unfolded = [ "Region" ]
 [node name="Sip" type="AudioStreamPlayer2D" parent="." index="3"]
 
 stream = ExtResource( 3 )
-volume_db = 0.0
-pitch_scale = 1.0
+volume_db = -5.0
 autoplay = false
 max_distance = 2000.0
 attenuation = 1.0

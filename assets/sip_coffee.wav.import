@@ -7,10 +7,10 @@ path="res://.import/sip_coffee.wav-ff71fcfccfc50be1f41f4a2cef0f8a36.sample"
 [deps]
 
 source_file="res://assets/sip_coffee.wav"
-source_md5="3ec114feb1f10a702ba8a945d72ac298"
+source_md5="838fc0684b1cca8869ff0813632c5e7c"
 
 dest_files=[ "res://.import/sip_coffee.wav-ff71fcfccfc50be1f41f4a2cef0f8a36.sample" ]
-dest_md5="394b88f5cb2d3917e728762a64a313dc"
+dest_md5="0da8eff635a99ee9c31f26b9506759da"
 
 [params]
 

@@ -7,10 +7,10 @@ path="res://.import/chair.wav-4f49a0e5b09e45efff0055137e69e672.sample"
 [deps]
 
 source_file="res://assets/chair.wav"
-source_md5="cad0a3b886b6e42779dfa1e9a801e4b0"
+source_md5="bfaf6341373aac57f2791fecdf64552a"
 
 dest_files=[ "res://.import/chair.wav-4f49a0e5b09e45efff0055137e69e672.sample" ]
-dest_md5="4280284d0f826a1ee7d52dcc380d23a7"
+dest_md5="683e5287136ed40adf007a7374a7c21e"
 
 [params]
 

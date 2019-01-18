@@ -10,7 +10,7 @@ config_version=3
 
 [application]
 
-config/name="Empathy Game"
+config/name="Morning Routines"
 run/main_scene="res://colworld.tscn"
 config/icon="res://icon.png"
 
