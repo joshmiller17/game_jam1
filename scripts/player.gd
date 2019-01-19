@@ -29,7 +29,7 @@ var bed_cleaned
 var repeat_counter = 20
 var colroot
 var obj_list = ["Door", "Door2", "Coffee_Mug", "Bed", "Chair Living", "Stove", "Wardrobe", "Laptop", "Sofa", "Chair Kitchen", "Toilet"]
-	
+var reminders = 100
 
 
 var indicator = preload("res://scenes/indicator.tscn")
@@ -52,10 +52,17 @@ func can_move(dir):
 		show_where_to_go(ind)
 		add_child(ind)
 		$IndicatorTimer.start()
+		if get_child_count() > 20:
+			if reminders > 0:
+				show_msg("No, no, it was " + necessary_input)
+				reminders -= 1
 		return false
 	
 func update_move(dir):
 	clear_indicators()
+	if $Message.text.find("No, no") != -1:
+		print("test")
+		$Message.hide()
 	if character == "A":
 		pass
 		
@@ -231,9 +238,7 @@ func _physics_process(delta):
 				check_interaction_complete(interaction_object)
 				time_since_last_interaction = 0
 					
-				# TEST
 				var dist = self.position.distance_to(interaction_object.position)
-				print(dist)
 			
 
 	if character == "B":
